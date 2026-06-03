@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js App",
-  description: "Next.js template with Redux and Tailwind",
+  title: "Personal Finances",
+  description: "Personal finance tracker",
 };
 
 export default function RootLayout({

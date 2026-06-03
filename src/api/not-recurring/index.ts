@@ -1,0 +1,1 @@
+export { getAllNotRecurring } from './client';
