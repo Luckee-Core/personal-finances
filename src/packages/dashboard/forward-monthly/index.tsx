@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useAppSelector } from '@/store/hooks';
-import { sumForwardMonthlyBudget } from '@/utils/dashboard/sum-forward-monthly-budget';
+import { sumForwardMonthlyBudget } from '@/utils/dashboard';
 import { formatCents } from '@/utils/format-cents';
 
 export const DashboardForwardMonthlyCard = () => {

@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { store } from '@/store/store';
 import { createCategoryThunk } from '@/store/thunks/categories/create-category-thunk';
 import { updateTransactionCategoryThunk } from '@/store/thunks/transactions/update-transaction-category-thunk';
-import { getCategoryMenuPlacement } from '@/utils/categories/get-category-menu-placement';
-import { normalizeCategoryName } from '@/utils/categories/normalize-category-name';
+import { getCategoryMenuPlacement } from '@/utils/categories';
+import { normalizeCategoryName } from '@/utils/categories';
 
 export type TransactionCategoryComboboxProps = {
   transactionId: string;

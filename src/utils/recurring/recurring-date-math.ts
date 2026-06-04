@@ -1,5 +1,5 @@
 import type { BillingInterval } from '@/model/recurring-purchase';
-import { formatLocalDate } from '@/utils/dashboard/format-local-date';
+import { formatLocalDate } from '@/utils/dashboard';
 
 const parseLocalDate = (dateStr: string): Date => {
   const [year, month, day] = dateStr.split('-').map(Number);

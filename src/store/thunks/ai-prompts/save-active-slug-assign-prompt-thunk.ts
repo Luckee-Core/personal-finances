@@ -1,7 +1,7 @@
 import { updateAiPrompt } from '@/api/ai-prompts';
 import { AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN } from '@/model/ai-prompt';
 import { AiPromptsActions } from '@/store/dumps';
-import { getActiveSlugAssignPrompt } from '@/utils/ai-prompts/get-active-slug-assign-prompt';
+import { getActiveSlugAssignPrompt } from '@/utils/ai-prompts';
 import { loadAiPromptsThunk } from './load-ai-prompts-thunk';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';

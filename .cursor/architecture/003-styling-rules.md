@@ -2,7 +2,7 @@
 
 ## Scope
 
-These rules define how styling must be written in this repository's Next.js codebase.
+These rules define how styling must be written in the **personal-finances** Next.js codebase.
 
 ## Required Pattern
 
@@ -10,8 +10,17 @@ These rules define how styling must be written in this repository's Next.js code
 2. Use **template literals** (backticks) for style values.
 3. Define the **component first**, then define `styles` **after** the component function.
 4. Group responsive utilities so each breakpoint is on a separate line.
-5. Do **not** use inline `style={{ ... }}`.
+5. Do **not** use inline `style={{ ... }}` except for the **dynamic exceptions** below.
 6. Do **not** create separate CSS files (`.css`, `.module.css`, `.scss`) for component styling.
+
+### Dynamic inline style exceptions
+
+Inline `style={{ ... }}` is allowed only when the value cannot be expressed as static Tailwind classes:
+
+1. **Portal / fixed positioning** — coordinates computed at runtime (`top`, `left`, `width`, `maxHeight`, `bottom`) for `createPortal` menus and popovers.
+2. **Data-driven colors** — e.g. category swatch `backgroundColor` from entity `color` field.
+
+All other layout, spacing, and typography must use the `styles` object with Tailwind classes.
 
 ---
 

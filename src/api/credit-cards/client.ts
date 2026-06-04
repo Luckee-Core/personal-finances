@@ -16,6 +16,9 @@ export type CreateCreditCardPayload = {
   last_four?: string | null;
 };
 
+/**
+ * Loads all credit cards from Express `/api/data/credit-cards`.
+ */
 export const getAllCreditCards = async (): Promise<ApiResponse<CreditCard[]>> => {
   try {
     const { data } = await getApiClient().get<ListBody>('/api/data/credit-cards');
@@ -25,6 +28,9 @@ export const getAllCreditCards = async (): Promise<ApiResponse<CreditCard[]>> =>
   }
 };
 
+/**
+ * Creates a credit card via POST `/api/data/credit-cards`.
+ */
 export const createCreditCard = async (
   payload: CreateCreditCardPayload,
 ): Promise<ApiResponse<CreditCard>> => {

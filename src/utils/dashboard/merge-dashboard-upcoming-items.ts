@@ -1,5 +1,5 @@
-import type { UpcomingCharge } from '@/utils/recurring/get-upcoming-charges-in-range';
-import type { PlannedAnticipatedCharge } from '@/utils/anticipated/get-planned-anticipated-in-range';
+import type { UpcomingCharge } from '@/utils/recurring';
+import type { PlannedAnticipatedCharge } from '@/utils/anticipated';
 
 export type DashboardUpcomingItem =
   | {

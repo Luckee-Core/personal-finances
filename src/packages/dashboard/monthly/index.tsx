@@ -6,8 +6,8 @@ import { useAppSelector } from '@/store/hooks';
 import {
   isDateInDashboardRange,
   resolveDashboardDateRange,
-} from '@/utils/dashboard/resolve-dashboard-date-range';
-import { transactionSpendCents } from '@/utils/dashboard/transaction-spend-cents';
+} from '@/utils/dashboard';
+import { transactionSpendCents } from '@/utils/dashboard';
 import { formatCents } from '@/utils/format-cents';
 
 export const DashboardMonthlySpendCard = () => {

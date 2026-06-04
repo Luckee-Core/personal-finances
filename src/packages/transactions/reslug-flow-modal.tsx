@@ -9,7 +9,7 @@ import { reslugTransactionThunk } from '@/store/thunks/transactions/reslug-trans
 import {
   getActiveSlugAssignPrompt,
   getSlugAssignSystemPromptText,
-} from '@/utils/ai-prompts/get-active-slug-assign-prompt';
+} from '@/utils/ai-prompts';
 
 export type ReslugFlowModalProps = {
   isOpen: boolean;

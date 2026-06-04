@@ -18,7 +18,7 @@ import { TransactionRowActionsMenu } from './transaction-row-actions-menu';
 import {
   isDateInDashboardRange,
   resolveDashboardDateRange,
-} from '@/utils/dashboard/resolve-dashboard-date-range';
+} from '@/utils/dashboard';
 import { formatCents } from '@/utils/format-cents';
 import { RecategorizeFlowModal } from '@/packages/transactions/recategorize-flow-modal';
 

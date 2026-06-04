@@ -75,6 +75,9 @@ export type MarkNotRecurringResult = {
   slug: string;
 };
 
+/**
+ * Marks a recurring purchase's slug as not recurring.
+ */
 export const markRecurringPurchaseNotRecurring = async (
   id: string,
 ): Promise<ApiResponse<MarkNotRecurringResult>> => {
@@ -88,6 +91,9 @@ export const markRecurringPurchaseNotRecurring = async (
   }
 };
 
+/**
+ * Deletes a recurring purchase via DELETE `/api/data/recurring-purchases/:id`.
+ */
 export const deleteRecurringPurchase = async (id: string): Promise<ApiResponse<null>> => {
   try {
     const { data } = await getApiClient().delete<VoidBody>(`/api/data/recurring-purchases/${id}`);

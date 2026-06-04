@@ -4,7 +4,7 @@
 Accepted
 
 ## Context
-This document defines component composition rules for **roads-seller-web** to keep routing, feature logic, and shared UI consistent and scalable.
+This document defines component composition rules for **personal-finances** to keep routing, feature logic, and shared UI consistent and scalable.
 
 ## Decision
 
@@ -12,9 +12,10 @@ This document defines component composition rules for **roads-seller-web** to ke
 `src/app/**/page.tsx` files only compose route-level layout by importing and rendering a package main component.
 
 - No business logic
-- No data orchestration
-- No Redux selector/thunk wiring
+- No data orchestration (except breadcrumb registration per ADR 007)
 - No large JSX trees
+
+**Exception (ADR 007):** Dashboard `page.tsx` files may call `useRegisterStaticDashboardBreadcrumbs` or `useAppSelector` for the current entity label when building breadcrumb trails. Detail pages may read `current*` slices for breadcrumb labels only.
 
 ✅ **Do**
 ```tsx
@@ -255,4 +256,8 @@ export async function listOrders() {
 - Cleaner shared UI library with less accidental coupling.
 - Simpler state orchestration with explicit thunk dispatching.
 - Better maintainability and tooling support from consistent JSDoc on server code paths.
+
+## Related
+- [007 – Redux dashboard breadcrumbs](./007-redux-dashboard-breadcrumbs.md) — allowed page-level breadcrumb wiring
+- [008 – Express API boundary](./008-express-api-boundary.md) — no Next.js `app/api` handlers in this repo
 

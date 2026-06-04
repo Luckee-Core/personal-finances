@@ -30,6 +30,9 @@ export type CreateAnticipatedCostPayload = {
 
 export type UpdateAnticipatedCostPayload = Partial<CreateAnticipatedCostPayload>;
 
+/**
+ * Loads all anticipated costs from Express `/api/data/anticipated-costs`.
+ */
 export const getAllAnticipatedCosts = async (): Promise<ApiResponse<AnticipatedCost[]>> => {
   try {
     const { data } = await getApiClient().get<ListBody>('/api/data/anticipated-costs');
@@ -39,6 +42,9 @@ export const getAllAnticipatedCosts = async (): Promise<ApiResponse<AnticipatedC
   }
 };
 
+/**
+ * Creates an anticipated cost via POST `/api/data/anticipated-costs`.
+ */
 export const createAnticipatedCost = async (
   payload: CreateAnticipatedCostPayload,
 ): Promise<ApiResponse<AnticipatedCost>> => {
@@ -53,6 +59,9 @@ export const createAnticipatedCost = async (
   }
 };
 
+/**
+ * Updates an anticipated cost via PATCH `/api/data/anticipated-costs/:id`.
+ */
 export const updateAnticipatedCost = async (
   id: string,
   payload: UpdateAnticipatedCostPayload,
@@ -68,6 +77,9 @@ export const updateAnticipatedCost = async (
   }
 };
 
+/**
+ * Deletes an anticipated cost via DELETE `/api/data/anticipated-costs/:id`.
+ */
 export const deleteAnticipatedCost = async (id: string): Promise<ApiResponse<null>> => {
   try {
     const { data } = await getApiClient().delete<VoidBody>(

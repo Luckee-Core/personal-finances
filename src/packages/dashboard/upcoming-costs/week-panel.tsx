@@ -5,9 +5,9 @@ import { ANTICIPATED_COSTS_PATH, RECURRING_PURCHASE_DETAIL_PATH } from '@/config
 import type { DashboardDateRange } from '@/model/dashboard/time-period';
 import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/set-current-recurring-purchase-thunk';
 import { useAppDispatch } from '@/store/hooks';
-import { formatWeekRangeLabel, formatDueDateLabel } from '@/utils/dashboard/get-calendar-week-range';
+import { formatWeekRangeLabel, formatDueDateLabel } from '@/utils/dashboard';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
-import type { DashboardUpcomingItem } from '@/utils/dashboard/merge-dashboard-upcoming-items';
+import type { DashboardUpcomingItem } from '@/utils/dashboard';
 import { formatCents } from '@/utils/format-cents';
 
 type Props = {

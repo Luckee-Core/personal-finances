@@ -8,7 +8,7 @@ import { loadTransactionSlugAssignAuditThunk } from '@/store/thunks/transactions
 import { TransactionCategoryCombobox } from '@/packages/categories/transaction-category-combobox';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
-import { getTransactionAccountName } from '@/utils/transactions/get-transaction-account-name';
+import { getTransactionAccountName } from '@/utils/transactions';
 import { RecategorizeFlowModal } from '@/packages/transactions/recategorize-flow-modal';
 import { ReslugFlowModal } from '@/packages/transactions/reslug-flow-modal';
 

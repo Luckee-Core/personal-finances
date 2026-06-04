@@ -5,6 +5,9 @@ import type { NotRecurring } from '@/model/not-recurring';
 
 type ListBody = { success: boolean; data?: NotRecurring[]; error?: string };
 
+/**
+ * Loads all not-recurring slug markers from Express `/api/data/not-recurring`.
+ */
 export const getAllNotRecurring = async (): Promise<ApiResponse<NotRecurring[]>> => {
   try {
     const { data } = await getApiClient().get<ListBody>('/api/data/not-recurring');

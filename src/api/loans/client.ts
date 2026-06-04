@@ -23,6 +23,9 @@ export type CreateLoanPayload = {
 
 export type UpdateLoanPayload = Partial<CreateLoanPayload>;
 
+/**
+ * Loads all loans from Express `/api/data/loans`.
+ */
 export const getAllLoans = async (): Promise<ApiResponse<Loan[]>> => {
   try {
     const { data } = await getApiClient().get<ListBody>('/api/data/loans');
@@ -32,6 +35,9 @@ export const getAllLoans = async (): Promise<ApiResponse<Loan[]>> => {
   }
 };
 
+/**
+ * Creates a loan via POST `/api/data/loans`.
+ */
 export const createLoan = async (payload: CreateLoanPayload): Promise<ApiResponse<Loan>> => {
   try {
     const { data } = await getApiClient().post<EntityBody>('/api/data/loans', payload);
@@ -41,6 +47,9 @@ export const createLoan = async (payload: CreateLoanPayload): Promise<ApiRespons
   }
 };
 
+/**
+ * Updates a loan via PATCH `/api/data/loans/:id`.
+ */
 export const updateLoan = async (
   id: string,
   payload: UpdateLoanPayload,
@@ -53,6 +62,9 @@ export const updateLoan = async (
   }
 };
 
+/**
+ * Deletes a loan via DELETE `/api/data/loans/:id`.
+ */
 export const deleteLoan = async (id: string): Promise<ApiResponse<null>> => {
   try {
     const { data } = await getApiClient().delete<VoidBody>(`/api/data/loans/${id}`);

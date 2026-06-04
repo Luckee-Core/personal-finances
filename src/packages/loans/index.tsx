@@ -6,7 +6,7 @@ import { LoansActiveOnlyFilter } from './active-only-filter';
 import { LoansTable } from './table';
 import type { Loan } from '@/model/loan';
 import { useAppSelector } from '@/store/hooks';
-import { sumActiveLoanMonthlyCents } from '@/utils/loans/sum-active-loan-monthly-cents';
+import { sumActiveLoanMonthlyCents } from '@/utils/loans';
 import { formatCents } from '@/utils/format-cents';
 
 export const LoansPage = () => {

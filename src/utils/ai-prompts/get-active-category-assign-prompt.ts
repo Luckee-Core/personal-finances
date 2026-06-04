@@ -2,7 +2,7 @@ import {
   AI_PROMPT_TYPE_TRANSACTION_CATEGORY_ASSIGN,
   type AiPrompt,
 } from '@/model/ai-prompt';
-import { DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT } from '@/utils/ai-prompts/constants';
+import { DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT } from '@/utils/ai-prompts';
 
 /**
  * Returns the active category-assign prompt from the dump, if any.

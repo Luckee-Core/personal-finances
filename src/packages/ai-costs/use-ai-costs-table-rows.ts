@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useAppSelector } from '@/store/hooks';
-import { computeExchangeCostCents } from '@/utils/costs/compute-exchange-cost-cents';
+import { computeExchangeCostCents } from '@/utils/costs';
 
 export type AiCostDisplayRow = {
   id: string;

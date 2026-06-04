@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { getCategoryMenuPlacement } from '@/utils/categories/get-category-menu-placement';
+import { getCategoryMenuPlacement } from '@/utils/categories';
 
 export type TransactionRowActionsMenuProps = {
   isOpen: boolean;

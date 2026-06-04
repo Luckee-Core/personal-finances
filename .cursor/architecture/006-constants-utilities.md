@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define a consistent approach for reusable constants and pure utilities in this Next.js codebase.
+Define a consistent approach for reusable constants and pure utilities in the **personal-finances** Next.js codebase.
 
 ## Rules
 

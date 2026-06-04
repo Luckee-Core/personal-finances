@@ -4,7 +4,7 @@
 Accepted
 
 ## Context
-This ADR defines the required file-organization standard for **roads-seller-web** so module ownership, exports, and imports stay predictable as the codebase grows.
+This ADR defines the required file-organization standard for **personal-finances** so module ownership, exports, and imports stay predictable as the codebase grows.
 
 ## Decision
 

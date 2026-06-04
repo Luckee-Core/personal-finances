@@ -1,5 +1,5 @@
 import type { AnticipatedTimeframeInterval } from '@/model/anticipated-cost';
-import { formatDueDateLabel } from '@/utils/dashboard/get-calendar-week-range';
+import { formatDueDateLabel } from '@/utils/dashboard';
 import { formatAnticipatedEveryLabel } from './format-anticipated-schedule-label';
 import { getAnticipatedTimeframeBounds } from './get-anticipated-timeframe-bounds';
 

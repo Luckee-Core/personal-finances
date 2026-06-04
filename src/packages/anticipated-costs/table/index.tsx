@@ -6,7 +6,7 @@ import { deleteAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/del
 import { updateAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/update-anticipated-cost-thunk';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
-import { formatAnticipatedTimeframeLabel } from '@/utils/anticipated/format-anticipated-timeframe-label';
+import { formatAnticipatedTimeframeLabel } from '@/utils/anticipated';
 
 type Props = {
   onEdit: (cost: AnticipatedCost) => void;

@@ -1,7 +1,7 @@
 import { updateAiPrompt } from '@/api/ai-prompts';
 import { AI_PROMPT_TYPE_TRANSACTION_CATEGORY_ASSIGN } from '@/model/ai-prompt';
 import { AiPromptsActions } from '@/store/dumps';
-import { getActiveCategoryAssignPrompt } from '@/utils/ai-prompts/get-active-category-assign-prompt';
+import { getActiveCategoryAssignPrompt } from '@/utils/ai-prompts';
 import { loadAiPromptsThunk } from './load-ai-prompts-thunk';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';

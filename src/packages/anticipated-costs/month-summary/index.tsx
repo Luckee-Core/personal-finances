@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useAppSelector } from '@/store/hooks';
-import { sumPlannedAnticipatedMonthlyBudget } from '@/utils/anticipated/estimate-planned-monthly-cents';
+import { sumPlannedAnticipatedMonthlyBudget } from '@/utils/anticipated';
 import { formatCents } from '@/utils/format-cents';
 
 export const AnticipatedCostsMonthSummary = () => {

@@ -13,7 +13,7 @@ import {
   DEFAULT_RECURRING_DETECT_PROMPT,
   DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT,
   DEFAULT_TRANSACTION_SLUG_ASSIGN_PROMPT,
-} from '@/utils/ai-prompts/constants';
+} from '@/utils/ai-prompts';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { activateAiPromptThunk } from '@/store/thunks/ai-prompts/activate-ai-prompt-thunk';
 import { createAiPromptThunk } from '@/store/thunks/ai-prompts/create-ai-prompt-thunk';

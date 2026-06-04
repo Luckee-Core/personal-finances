@@ -6,8 +6,8 @@ import { deleteLoanThunk } from '@/store/thunks/loans/delete-loan-thunk';
 import { updateLoanThunk } from '@/store/thunks/loans/update-loan-thunk';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
-import { getLoanVendorName } from '@/utils/loans/get-loan-vendor-name';
-import { sumActiveLoanMonthlyCents } from '@/utils/loans/sum-active-loan-monthly-cents';
+import { getLoanVendorName } from '@/utils/loans';
+import { sumActiveLoanMonthlyCents } from '@/utils/loans';
 
 type Props = {
   hideInactive: boolean;

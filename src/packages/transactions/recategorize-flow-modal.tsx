@@ -6,11 +6,11 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { store } from '@/store/store';
 import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts/load-ai-prompts-thunk';
 import { categorizeTransactionsThunk } from '@/store/thunks/transactions/categorize-transactions-thunk';
-import { DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT } from '@/utils/ai-prompts/constants';
+import { DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT } from '@/utils/ai-prompts';
 import {
   getActiveCategoryAssignPrompt,
   getCategoryAssignSystemPromptText,
-} from '@/utils/ai-prompts/get-active-category-assign-prompt';
+} from '@/utils/ai-prompts';
 
 export type RecategorizeFlowModalProps = {
   isOpen: boolean;

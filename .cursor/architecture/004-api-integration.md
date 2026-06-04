@@ -2,7 +2,9 @@
 
 ## Objective
 
-Define one consistent API integration pattern for this Next.js codebase so data flow, typing, and error handling are predictable.
+Define one consistent API integration pattern for **personal-finances** so data flow, typing, and error handling are predictable.
+
+> **Note:** This app does not use `src/app/api/**`. All HTTP calls go to Express. See [008 – Express API boundary](./008-express-api-boundary.md). Examples below that reference Next.js route handlers apply only if a BFF layer is added later.
 
 ## Required Rules
 

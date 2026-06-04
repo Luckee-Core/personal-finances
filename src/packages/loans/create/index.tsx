@@ -2,11 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import type { Loan } from '@/model/loan';
-import { createLoanThunk } from '@/store/thunks/loans/create-loan-thunk';
-import { updateLoanThunk } from '@/store/thunks/loans/update-loan-thunk';
+import { saveLoanThunk } from '@/store/thunks/loans/save-loan-thunk';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { store } from '@/store';
-import { resolveLoanVendorIdForSave } from '@/utils/loans/resolve-loan-vendor-id-for-save';
 
 type Props = {
   isOpen: boolean;
@@ -76,29 +73,18 @@ export const LoanFormModal = ({ isOpen, onClose, loan }: Props) => {
     }
 
     setIsSaving(true);
-    const vendorResult = await resolveLoanVendorIdForSave(
-      dispatch,
-      store.getState,
-      loanVendorId,
-      newVendorName,
+    const result = await dispatch(
+      saveLoanThunk({
+        loanId: isEdit ? loan.id : undefined,
+        name: name.trim(),
+        balance_cents: balanceCents,
+        monthly_payment_cents: monthlyPaymentCents,
+        notes: notes.trim() || null,
+        is_active: isActive,
+        loanVendorId,
+        newVendorName,
+      }),
     );
-    if (!vendorResult.ok) {
-      setIsSaving(false);
-      setError(vendorResult.message);
-      return;
-    }
-
-    const payload = {
-      name: name.trim(),
-      loan_vendor_id: vendorResult.loanVendorId,
-      balance_cents: balanceCents,
-      monthly_payment_cents: monthlyPaymentCents,
-      notes: notes.trim() || null,
-      is_active: isActive,
-    };
-    const result = isEdit
-      ? await dispatch(updateLoanThunk(loan.id, payload))
-      : await dispatch(createLoanThunk(payload));
     setIsSaving(false);
     if (result.status !== 200) {
       setError(result.message);

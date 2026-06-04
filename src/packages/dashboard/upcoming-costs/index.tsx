@@ -5,10 +5,10 @@ import { useMemo } from 'react';
 import { ANTICIPATED_COSTS_PATH } from '@/config/routes';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
 import { useAppSelector } from '@/store/hooks';
-import { getPlannedAnticipatedInRange } from '@/utils/anticipated/get-planned-anticipated-in-range';
-import { getCalendarWeekRange } from '@/utils/dashboard/get-calendar-week-range';
-import { mergeDashboardUpcomingItems } from '@/utils/dashboard/merge-dashboard-upcoming-items';
-import { getUpcomingChargesInRange } from '@/utils/recurring/get-upcoming-charges-in-range';
+import { getPlannedAnticipatedInRange } from '@/utils/anticipated';
+import { getCalendarWeekRange } from '@/utils/dashboard';
+import { mergeDashboardUpcomingItems } from '@/utils/dashboard';
+import { getUpcomingChargesInRange } from '@/utils/recurring';
 import { DashboardUpcomingWeekPanel } from './week-panel';
 
 export const DashboardUpcomingCostsSection = () => {

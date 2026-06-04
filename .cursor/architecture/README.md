@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-This folder contains Architecture Decision Records (ADRs) for our Next.js codebase. Each ADR documents a decision, why it was made, and how to apply it consistently.
+This folder contains Architecture Decision Records (ADRs) for the **personal-finances** Next.js app. Each ADR documents a decision, why it was made, and how to apply it consistently.
 
 ## Why ADRs?
 
@@ -10,21 +10,26 @@ ADRs keep implementation consistent across the project by documenting:
 - **Why** we chose it
 - **How** to apply it in everyday development
 
-## Next.js ADR Index
+## ADR index
 
-1. [Redux patterns](./001-redux-patterns.md) — Global state boundaries, slice design, and store usage.
-2. [Component composition](./002-component-composition.md) — Client boundaries, colocation, and reusable UI structure.
-3. [Styling rules](./003-styling-rules.md) — Tailwind conventions, composition, and tokens.
-4. [API integration](./004-api-integration.md) — API layer patterns, typing, and UI/data separation.
-5. [File organization](./005-file-organization.md) — Folder boundaries, naming rules, and import conventions.
-6. [Constants and utilities](./006-constants-utilities.md) — Shared constants, pure helpers, and extraction rules.
-7. [Redux dashboard breadcrumbs](./007-redux-dashboard-breadcrumbs.md) — Serializable trail, resolver hook, route registration.
-8. [Standalone chat studio UI contract](./016-standalone-chat-studio-ui-contract.md) — Inline two-pane shell (55/45), scroll ownership, no slot-prop layout components; OSS alignment.
+| ADR | Topic |
+| --- | --- |
+| [001](./001-redux-patterns.md) | Redux — flat `dumps` / `current` / `builders` / `filters`, manual thunks, `ThunkResult` |
+| [002](./002-component-composition.md) | Component composition — thin pages, `src/packages/` |
+| [003](./003-styling-rules.md) | Styling — `styles` object pattern; dynamic inline exceptions |
+| [004](./004-api-integration.md) | API integration — thunk-only access, `ApiResponse<T>` |
+| [005](./005-file-organization.md) | File organization — folders, barrels, named exports |
+| [006](./006-constants-utilities.md) | Constants and utilities — pure helpers, domain folders |
+| [007](./007-redux-dashboard-breadcrumbs.md) | Dashboard breadcrumbs — `breadcrumbBuilder` slice |
+| [008](./008-express-api-boundary.md) | **Express API boundary** — no `src/app/api`; clients → Express |
+| [016](./016-standalone-chat-studio-ui-contract.md) | **Not applicable** — chat studio UI (no feature in this repo) |
 
-## How to Use
+## How to use
 
 1. Open the ADR most relevant to your feature.
 2. Follow the approved patterns in implementation.
-3. Add new ADRs here whenever architectural decisions change.
+3. Add new ADRs here whenever architectural decisions change—and **update this index**.
 
-**Per-folder source guides** (where code for each layer lives): see the **Documentation map** in the repository root **`README.md`** (links to every **`src/*/README.md`**).
+## Backend
+
+Server conventions live in **personal-finances-express-server** `.cursor/architecture/` (especially [011](../personal-finances-express-server/.cursor/architecture/011-personal-finances-api-data.md) for `/api/data`).

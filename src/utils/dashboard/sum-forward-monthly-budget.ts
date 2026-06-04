@@ -1,9 +1,9 @@
 import type { AnticipatedCost } from '@/model/anticipated-cost';
 import type { Loan } from '@/model/loan';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
-import { sumPlannedAnticipatedMonthlyBudget } from '@/utils/anticipated/estimate-planned-monthly-cents';
-import { sumActiveLoanMonthlyCents } from '@/utils/loans/sum-active-loan-monthly-cents';
-import { estimateRecurringMonthlyCents } from '@/utils/recurring/estimate-recurring-monthly-cents';
+import { sumPlannedAnticipatedMonthlyBudget } from '@/utils/anticipated';
+import { sumActiveLoanMonthlyCents } from '@/utils/loans';
+import { estimateRecurringMonthlyCents } from '@/utils/recurring';
 
 export type ForwardMonthlyBudget = {
   recurringCents: number;

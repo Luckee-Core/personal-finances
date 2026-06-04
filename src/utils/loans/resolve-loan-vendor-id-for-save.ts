@@ -1,6 +1,10 @@
 import type { LoanVendor } from '@/model/loan-vendor';
 import { createLoanVendorThunk } from '@/store/thunks/loan-vendors/create-loan-vendor-thunk';
-import type { AppDispatch, RootState } from '@/store';
+import type { ThunkResult } from '@/store/thunks/thunk-result';
+import type { AppThunk } from '@/store/types';
+import type { RootState } from '@/store/store';
+
+type SaveLoanDispatch = (thunk: AppThunk<Promise<ThunkResult>>) => Promise<ThunkResult>;
 
 type ResolveResult =
   | { ok: true; loanVendorId: string | null }
@@ -18,7 +22,7 @@ const findVendorByName = (
  * Uses an existing vendor id or creates one from newVendorName before saving a loan.
  */
 export const resolveLoanVendorIdForSave = async (
-  dispatch: AppDispatch,
+  dispatch: SaveLoanDispatch,
   getState: () => RootState,
   selectedVendorId: string,
   newVendorName: string,
