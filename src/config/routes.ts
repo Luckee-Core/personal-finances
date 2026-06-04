@@ -1,4 +1,6 @@
-export const HOME_PATH = '/';
+export const LANDING_PATH = '/';
+
+export const HOME_PATH = '/dashboard';
 
 export const TRANSACTIONS_PATH = '/transactions';
 export const TRANSACTION_DETAIL_PATH = '/transaction-detail';
