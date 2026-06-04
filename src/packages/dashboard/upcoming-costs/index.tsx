@@ -1,28 +1,43 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo } from 'react';
+import { ANTICIPATED_COSTS_PATH } from '@/config/routes';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
 import { useAppSelector } from '@/store/hooks';
+import { getPlannedAnticipatedInRange } from '@/utils/anticipated/get-planned-anticipated-in-range';
 import { getCalendarWeekRange } from '@/utils/dashboard/get-calendar-week-range';
+import { mergeDashboardUpcomingItems } from '@/utils/dashboard/merge-dashboard-upcoming-items';
 import { getUpcomingChargesInRange } from '@/utils/recurring/get-upcoming-charges-in-range';
 import { DashboardUpcomingWeekPanel } from './week-panel';
 
 export const DashboardUpcomingCostsSection = () => {
   const recurring = useAppSelector((state) => Object.values(state.recurringPurchases));
+  const anticipated = useAppSelector((state) => Object.values(state.anticipatedCosts));
   const transactions = useAppSelector((state) => Object.values(state.transactions));
 
   const thisWeekRange = useMemo(() => getCalendarWeekRange(0), []);
   const nextWeekRange = useMemo(() => getCalendarWeekRange(1), []);
 
-  const thisWeekCharges = useMemo(
-    () => getUpcomingChargesInRange(recurring, transactions, thisWeekRange),
-    [recurring, transactions, thisWeekRange],
-  );
+  const thisWeekItems = useMemo(() => {
+    const recurringCharges = getUpcomingChargesInRange(recurring, transactions, thisWeekRange);
+    const plannedCharges = getPlannedAnticipatedInRange(anticipated, thisWeekRange);
+    return mergeDashboardUpcomingItems(
+      recurringCharges,
+      plannedCharges,
+      thisWeekRange.start,
+    );
+  }, [recurring, anticipated, transactions, thisWeekRange]);
 
-  const nextWeekCharges = useMemo(
-    () => getUpcomingChargesInRange(recurring, transactions, nextWeekRange),
-    [recurring, transactions, nextWeekRange],
-  );
+  const nextWeekItems = useMemo(() => {
+    const recurringCharges = getUpcomingChargesInRange(recurring, transactions, nextWeekRange);
+    const plannedCharges = getPlannedAnticipatedInRange(anticipated, nextWeekRange);
+    return mergeDashboardUpcomingItems(
+      recurringCharges,
+      plannedCharges,
+      nextWeekRange.start,
+    );
+  }, [recurring, anticipated, transactions, nextWeekRange]);
 
   const recurringById = useMemo(() => {
     const map: Record<string, RecurringPurchase> = {};
@@ -37,21 +52,24 @@ export const DashboardUpcomingCostsSection = () => {
       <div>
         <h2 className={styles.heading}>Upcoming costs</h2>
         <p className={styles.subheading}>
-          Anticipated recurring charges (Monday–Sunday), based on billing interval and linked
-          transactions.
+          Recurring bills and{' '}
+          <Link href={ANTICIPATED_COSTS_PATH} className={styles.link}>
+            planned anticipated costs
+          </Link>{' '}
+          due this week and next (Monday–Sunday).
         </p>
       </div>
       <div className={styles.grid}>
         <DashboardUpcomingWeekPanel
           title="This week"
           range={thisWeekRange}
-          charges={thisWeekCharges}
+          items={thisWeekItems}
           recurringById={recurringById}
         />
         <DashboardUpcomingWeekPanel
           title="Next week"
           range={nextWeekRange}
-          charges={nextWeekCharges}
+          items={nextWeekItems}
           recurringById={recurringById}
         />
       </div>
@@ -68,6 +86,9 @@ const styles = {
   `,
   subheading: `
     text-sm text-gray-500
+  `,
+  link: `
+    text-gray-700 underline hover:text-gray-900
   `,
   grid: `
     grid gap-4

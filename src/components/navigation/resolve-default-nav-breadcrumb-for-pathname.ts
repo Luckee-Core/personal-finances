@@ -3,6 +3,9 @@ import {
   BANK_ACCOUNTS_PATH,
   CREDIT_CARDS_PATH,
   HOME_PATH,
+  ANTICIPATED_COSTS_PATH,
+  LOANS_PATH,
+  LOAN_VENDORS_PATH,
   RECURRING_PATH,
   STATEMENT_IMPORTS_PATH,
   TRANSACTIONS_PATH,
@@ -17,6 +20,15 @@ export const resolveDefaultNavBreadcrumbForPathname = (
   }
   if (pathname === RECURRING_PATH || pathname.startsWith('/recurring-purchase-detail')) {
     return { label: 'Recurring', href: RECURRING_PATH };
+  }
+  if (pathname === ANTICIPATED_COSTS_PATH) {
+    return { label: 'Anticipated costs', href: ANTICIPATED_COSTS_PATH };
+  }
+  if (pathname === LOANS_PATH) {
+    return { label: 'Loans', href: LOANS_PATH };
+  }
+  if (pathname === LOAN_VENDORS_PATH) {
+    return { label: 'Loan vendors', href: LOAN_VENDORS_PATH };
   }
   if (pathname === BANK_ACCOUNTS_PATH) {
     return { label: 'Bank accounts', href: BANK_ACCOUNTS_PATH };

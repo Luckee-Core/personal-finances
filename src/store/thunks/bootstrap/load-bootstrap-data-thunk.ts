@@ -7,6 +7,9 @@ import { getAllBankAccounts } from '@/api/bank-accounts';
 import { getAllCreditCards } from '@/api/credit-cards';
 import { getAllCategories } from '@/api/categories';
 import { getAllLlmModels } from '@/api/llm-models';
+import { getAllAnticipatedCosts } from '@/api/anticipated-costs';
+import { getAllLoanVendors } from '@/api/loan-vendors';
+import { getAllLoans } from '@/api/loans';
 import { getAllNotRecurring } from '@/api/not-recurring';
 import { getAllRecurringPurchases } from '@/api/recurring-purchases';
 import { getAllStatementImports } from '@/api/statement-imports';
@@ -17,6 +20,9 @@ import {
   CategoriesActions,
   LlmModelsActions,
   RecurringDetectAiExchangesActions,
+  AnticipatedCostsActions,
+  LoansActions,
+  LoanVendorsActions,
   NotRecurringActions,
   RecurringPurchasesActions,
   StatementImportsActions,
@@ -40,6 +46,9 @@ export const loadBootstrapDataThunk =
       categories,
       transactions,
       recurring,
+      anticipated,
+      loans,
+      loanVendors,
       notRecurring,
       imports,
       llmModels,
@@ -52,6 +61,9 @@ export const loadBootstrapDataThunk =
       getAllCategories(),
       getAllTransactions(),
       getAllRecurringPurchases(),
+      getAllAnticipatedCosts(),
+      getAllLoans(),
+      getAllLoanVendors(),
       getAllNotRecurring(),
       getAllStatementImports(),
       getAllLlmModels(),
@@ -88,6 +100,26 @@ export const loadBootstrapDataThunk =
 
     if (recurring.ok) {
       dispatch(RecurringPurchasesActions.setRecurringPurchases(rowsToEntityRecord(recurring.data)));
+    } else {
+      status = 400;
+    }
+
+    if (anticipated.ok) {
+      dispatch(
+        AnticipatedCostsActions.setAnticipatedCosts(rowsToEntityRecord(anticipated.data)),
+      );
+    } else {
+      status = 400;
+    }
+
+    if (loans.ok) {
+      dispatch(LoansActions.setLoans(rowsToEntityRecord(loans.data)));
+    } else {
+      status = 400;
+    }
+
+    if (loanVendors.ok) {
+      dispatch(LoanVendorsActions.setLoanVendors(rowsToEntityRecord(loanVendors.data)));
     } else {
       status = 400;
     }

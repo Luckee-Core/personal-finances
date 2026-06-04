@@ -1,9 +1,10 @@
 'use client';
 
 import { DashboardCategoriesSection } from './categories';
+import { DashboardForwardMonthlyCard } from './forward-monthly';
 import { DashboardMonthlySpendCard } from './monthly';
 import { DashboardPeriodFilter } from './period-filter';
-import { DashboardRecurringTotalCard } from './recurring';
+import { DashboardRecurringSection } from './recurring';
 import { DashboardTransactionsSection } from './transactions';
 import { DashboardUpcomingCostsSection } from './upcoming-costs';
 
@@ -13,14 +14,17 @@ export const DashboardPage = () => {
       <div className={styles.header}>
         <div>
           <h1 className={styles.title}>Dashboard</h1>
-          <p className={styles.subtitle}>Overview of spending and recurring commitments.</p>
+          <p className={styles.subtitle}>
+            Spending overview, forward monthly average, and upcoming commitments.
+          </p>
         </div>
         <DashboardPeriodFilter />
       </div>
       <div className={styles.cardGrid}>
         <DashboardMonthlySpendCard />
-        <DashboardRecurringTotalCard />
+        <DashboardForwardMonthlyCard />
       </div>
+      <DashboardRecurringSection />
       <DashboardUpcomingCostsSection />
       <DashboardCategoriesSection />
       <DashboardTransactionsSection />

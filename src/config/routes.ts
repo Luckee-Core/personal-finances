@@ -6,6 +6,11 @@ export const TRANSACTION_DETAIL_PATH = '/transaction-detail';
 export const RECURRING_PATH = '/recurring';
 export const RECURRING_PURCHASE_DETAIL_PATH = '/recurring-purchase-detail';
 
+export const ANTICIPATED_COSTS_PATH = '/anticipated-costs';
+
+export const LOANS_PATH = '/loans';
+export const LOAN_VENDORS_PATH = '/loan-vendors';
+
 export const STATEMENT_IMPORTS_PATH = '/statement-imports';
 export const STATEMENT_IMPORT_DETAIL_PATH = '/statement-import-detail';
 

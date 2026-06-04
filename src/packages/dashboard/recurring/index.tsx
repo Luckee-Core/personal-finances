@@ -1,45 +1,51 @@
 'use client';
 
-import { useMemo } from 'react';
-import { getDashboardTimePeriodLabel } from '@/model/dashboard/time-period';
-import { useAppSelector } from '@/store/hooks';
-import { recurringOverlapsPeriod } from '@/utils/dashboard/recurring-overlaps-period';
-import { resolveDashboardDateRange } from '@/utils/dashboard/resolve-dashboard-date-range';
-import { formatCents } from '@/utils/format-cents';
+import { useState } from 'react';
+import Link from 'next/link';
+import { RECURRING_PATH } from '@/config/routes';
+import { DashboardRecurringActiveOnlyFilter } from './active-only-filter';
+import { DashboardRecurringTable } from './table';
 
-export const DashboardRecurringTotalCard = () => {
-  const recurring = useAppSelector((state) => Object.values(state.recurringPurchases));
-  const timePeriod = useAppSelector((state) => state.dashboardBuilder.timePeriod);
-
-  const activeRecurringCents = useMemo(() => {
-    const range = resolveDashboardDateRange(timePeriod);
-    return recurring
-      .filter((r) => recurringOverlapsPeriod(r, range))
-      .reduce((sum, r) => sum + r.amount_cents, 0);
-  }, [recurring, timePeriod]);
-
-  const periodLabel = getDashboardTimePeriodLabel(timePeriod);
+export const DashboardRecurringSection = () => {
+  const [hideInactive, setHideInactive] = useState(true);
 
   return (
-    <div className={styles.card}>
-      <p className={styles.cardLabel}>Active recurring total</p>
-      <p className={styles.cardPeriod}>{periodLabel}</p>
-      <p className={styles.cardValue}>{formatCents(activeRecurringCents)}</p>
-    </div>
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <div>
+          <h2 className={styles.heading}>Recurring</h2>
+          <p className={styles.subheading}>
+            Active subscriptions and bills.{' '}
+            <Link href={RECURRING_PATH} className={styles.link}>
+              Manage recurring →
+            </Link>
+          </p>
+        </div>
+        <DashboardRecurringActiveOnlyFilter
+          hideInactive={hideInactive}
+          onHideInactiveChange={setHideInactive}
+        />
+      </div>
+      <DashboardRecurringTable hideInactive={hideInactive} />
+    </section>
   );
 };
 
 const styles = {
-  card: `
-    rounded-lg border border-gray-200 bg-white p-5
+  section: `
+    space-y-3
   `,
-  cardLabel: `
+  header: `
+    flex flex-col gap-3
+    sm:flex-row sm:items-end sm:justify-between
+  `,
+  heading: `
+    text-lg font-semibold text-gray-900
+  `,
+  subheading: `
     text-sm text-gray-500
   `,
-  cardPeriod: `
-    text-xs text-gray-400
-  `,
-  cardValue: `
-    mt-2 text-2xl font-semibold text-gray-900
+  link: `
+    text-gray-700 underline hover:text-gray-900
   `,
 } as const;
