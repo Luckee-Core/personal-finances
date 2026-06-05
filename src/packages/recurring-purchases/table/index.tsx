@@ -4,11 +4,13 @@ import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { RECURRING_PURCHASE_DETAIL_PATH } from '@/config/routes';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
-import { TransactionRowActionsMenu } from '@/packages/dashboard/transactions/transaction-row-actions-menu';
-import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/set-current-recurring-purchase-thunk';
-import { deleteRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/delete-recurring-purchase-thunk';
-import { markNotRecurringThunk } from '@/store/thunks/recurring-purchases/mark-not-recurring-thunk';
-import { updateRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/update-recurring-purchase-thunk';
+import { TransactionRowActionsMenu } from '@/components/transaction-row-actions-menu';
+import {
+  deleteRecurringPurchaseThunk,
+  markNotRecurringThunk,
+  setCurrentRecurringPurchaseThunk,
+  updateRecurringPurchaseThunk,
+} from '@/store/thunks/recurring-purchases';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 
@@ -87,10 +89,10 @@ export const RecurringPurchasesTable = ({ onEdit }: Props) => {
     setActionError(null);
     setBusyId(row.id);
     setBusyAction('delete');
-    const status = await dispatch(deleteRecurringPurchaseThunk(row.id));
+    const result = await dispatch(deleteRecurringPurchaseThunk(row.id));
     setBusyId(null);
     setBusyAction(null);
-    if (status !== 200) {
+    if (result.status !== 200) {
       setActionError('Failed to delete recurring purchase');
     }
   };

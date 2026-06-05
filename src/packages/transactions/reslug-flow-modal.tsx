@@ -3,9 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN } from '@/model/ai-prompt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { store } from '@/store/store';
-import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts/load-ai-prompts-thunk';
-import { reslugTransactionThunk } from '@/store/thunks/transactions/reslug-transaction-thunk';
+import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts';
+import { reslugTransactionThunk } from '@/store/thunks/transactions';
 import {
   getActiveSlugAssignPrompt,
   getSlugAssignSystemPromptText,
@@ -32,6 +31,7 @@ export const ReslugFlowModal = ({
   const [baselinePrompt, setBaselinePrompt] = useState('');
   const [savePrompt, setSavePrompt] = useState(true);
   const [loadingPrompt, setLoadingPrompt] = useState(false);
+  const [promptsLoaded, setPromptsLoaded] = useState(false);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,16 +41,22 @@ export const ReslugFlowModal = ({
     if (!isOpen) return;
     setError(null);
     setSavePrompt(true);
+    setPromptsLoaded(false);
     const load = async () => {
       setLoadingPrompt(true);
       await dispatch(loadAiPromptsThunk(AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN));
-      const text = getSlugAssignSystemPromptText(store.getState().aiPrompts);
-      setSystemPrompt(text);
-      setBaselinePrompt(text);
       setLoadingPrompt(false);
+      setPromptsLoaded(true);
     };
     void load();
   }, [isOpen, dispatch]);
+
+  useEffect(() => {
+    if (!isOpen || !promptsLoaded) return;
+    const text = getSlugAssignSystemPromptText(aiPrompts);
+    setSystemPrompt(text);
+    setBaselinePrompt(text);
+  }, [isOpen, promptsLoaded, aiPrompts]);
 
   if (!isOpen) {
     return null;

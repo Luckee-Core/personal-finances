@@ -3,9 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AI_PROMPT_TYPE_TRANSACTION_CATEGORY_ASSIGN } from '@/model/ai-prompt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { store } from '@/store/store';
-import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts/load-ai-prompts-thunk';
-import { categorizeTransactionsThunk } from '@/store/thunks/transactions/categorize-transactions-thunk';
+import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts';
+import { categorizeTransactionsThunk } from '@/store/thunks/transactions';
 import { DEFAULT_TRANSACTION_CATEGORY_ASSIGN_PROMPT } from '@/utils/ai-prompts';
 import {
   getActiveCategoryAssignPrompt,
@@ -72,8 +71,7 @@ export const RecategorizeFlowModal = ({
   }, [isOpen, dispatch]);
 
   const loadSavedPrompt = () => {
-    const text = getCategoryAssignSystemPromptText(store.getState().aiPrompts);
-    setSystemPrompt(text);
+    setSystemPrompt(getCategoryAssignSystemPromptText(aiPrompts));
   };
 
   if (!isOpen) {

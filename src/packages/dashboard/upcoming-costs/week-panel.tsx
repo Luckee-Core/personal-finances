@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { ANTICIPATED_COSTS_PATH, RECURRING_PURCHASE_DETAIL_PATH } from '@/config/routes';
 import type { DashboardDateRange } from '@/model/dashboard/time-period';
-import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/set-current-recurring-purchase-thunk';
+import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases';
 import { useAppDispatch } from '@/store/hooks';
 import { formatWeekRangeLabel, formatDueDateLabel } from '@/utils/dashboard';
 import type { RecurringPurchase } from '@/model/recurring-purchase';

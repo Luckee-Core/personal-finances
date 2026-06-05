@@ -9,10 +9,11 @@ export const LandingOpenSourceSection = () => {
         <LandingSectionLabel number="05" label="Open source" />
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.heading}>A Next.js app and an Express data service.</h2>
+            <h2 className={styles.heading}>Two repos. Same split I use everywhere else.</h2>
             <p className={styles.lead}>
-              Same patterns as Luckee studios. Supabase schema migrations, typed API boundaries, and
-              a clear split between web and data.
+              Next.js web app plus Express data service. Supabase migrations, typed `/api/data`
+              boundaries, Redux thunks on the front — so the dashboard repo stays thin and the API
+              owns persistence.
             </p>
             <a href={DOCS_URL} id="docs" className={styles.docsLink}>
               Documentation

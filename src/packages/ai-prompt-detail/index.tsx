@@ -9,8 +9,7 @@ import {
   AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN,
 } from '@/model/ai-prompt';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { loadAiPromptDetailThunk } from '@/store/thunks/ai-prompts/load-ai-prompt-detail-thunk';
-import { saveAiPromptThunk } from '@/store/thunks/ai-prompts/save-ai-prompt-thunk';
+import { loadAiPromptDetailThunk, saveAiPromptThunk } from '@/store/thunks/ai-prompts';
 import { CurrentAiPromptActions } from '@/store/current';
 
 export const AiPromptDetailPage = () => {

@@ -4,11 +4,13 @@ import { useCallback, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { TRANSACTION_DETAIL_PATH } from '@/config/routes';
 import type { Transaction } from '@/model/transaction';
-import { TransactionCategoryCombobox } from '@/packages/categories/transaction-category-combobox';
-import { TransactionRowActionsMenu } from '@/packages/dashboard/transactions/transaction-row-actions-menu';
+import { TransactionCategoryCombobox } from '@/packages/categories';
+import { TransactionRowActionsMenu } from '@/components/transaction-row-actions-menu';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { deleteTransactionThunk } from '@/store/thunks/transactions/delete-transaction-thunk';
-import { setCurrentTransactionThunk } from '@/store/thunks/transactions/set-current-transaction-thunk';
+import {
+  deleteTransactionThunk,
+  setCurrentTransactionThunk,
+} from '@/store/thunks/transactions';
 import { formatCents } from '@/utils/format-cents';
 
 type ImportTransactionsTableProps = {
@@ -54,9 +56,9 @@ export const ImportTransactionsTable = ({ transactions }: ImportTransactionsTabl
     }
     setActionError(null);
     setDeletingId(row.id);
-    const status = await dispatch(deleteTransactionThunk(row.id));
+    const result = await dispatch(deleteTransactionThunk(row.id));
     setDeletingId(null);
-    if (status !== 200) {
+    if (result.status !== 200) {
       setActionError('Failed to delete transaction');
     }
   };

@@ -1,5 +1,5 @@
 const githubOrg =
-  process.env.NEXT_PUBLIC_GITHUB_ORG ?? 'matthewruiz';
+  process.env.NEXT_PUBLIC_GITHUB_ORG ?? 'Luckee-Core';
 
 export const GITHUB_WEB_URL =
   process.env.NEXT_PUBLIC_GITHUB_WEB_URL ??
@@ -17,77 +17,86 @@ export const THT_URL =
 
 export const LANDING_BRAND_NAME = 'Personal Finances';
 
-export const LANDING_HERO_KICKER = 'Open source · Self-hostable · AI-assisted';
+export const LANDING_HERO_KICKER = 'Open source · Self-hostable · Your data';
+
+export const LANDING_HERO_HEADLINE = 'See where the money went';
+export const LANDING_HERO_HEADLINE_ACCENT = 'before you guess on the 28th.';
+
+export const LANDING_HERO_SUB =
+  'I got tired of reconciling bank CSVs in spreadsheets and re-categorizing the same merchants every month. Import statements, tune the AI prompts, track recurring bills and loans — on your Supabase project, not someone else\'s dashboard.';
+
+export const LANDING_HERO_CTA_PRIMARY = 'Clone & self-host';
+export const LANDING_HERO_CTA_SECONDARY = 'See the dashboard';
 
 export const LANDING_HERO_STATS = [
-  { k: 'CSV imports', v: 'Bank & credit' },
-  { k: 'Editable AI prompts', v: 'Versioned · activatable' },
-  { k: 'Full audit trail', v: 'Per-request AI costs' },
+  { k: 'CSV imports', v: 'Bank & credit statements' },
+  { k: 'Your prompts', v: 'Versioned · activatable' },
+  { k: 'Token audit', v: 'Per-request AI costs' },
 ] as const;
 
 export const LANDING_REPOS = [
   {
     name: 'personal-finances',
-    desc: 'Next.js web app. Redux dashboard, transactions, planning, settings.',
+    desc: 'Next.js dashboard — Redux, transactions, planning, AI prompt settings.',
     tag: 'web',
     href: GITHUB_WEB_URL,
   },
   {
     name: 'personal-finances-express-server',
-    desc: 'Express data service exposing /api/data/* backed by Supabase.',
+    desc: 'Express `/api/data` service backed by Supabase. AI workers under `/api/ai`.',
     tag: 'api',
     href: GITHUB_API_URL,
   },
 ] as const;
 
 export const LANDING_ACTIVITY_POINTS = [
-  'Transactions list with detail drawer',
+  'Transactions list with a detail view when you need to fix one row',
   'CSV imports for bank accounts and credit cards',
-  'Batch AI slug assignment across imports',
-  'Category assignment with your custom prompts',
+  'Batch slug assignment — your prompt, your rules',
+  'Category assignment you can override line by line',
 ] as const;
 
 export const LANDING_PLANNING_ITEMS = [
   {
     key: 'recurring',
     title: 'Recurring purchases',
-    description: 'Intervals, active filter, and AI-assisted recurring detection.',
+    description: 'Intervals, filters, and AI-assisted detection when you want help.',
   },
   {
     key: 'anticipated',
     title: 'Anticipated costs',
-    description: 'Scheduled and planned expenses on the same timeline.',
+    description: 'Planned expenses on the same timeline as recurring bills.',
   },
   {
     key: 'loans',
     title: 'Loans',
-    description: 'Balances, payment cadence, and tracked over time.',
+    description: 'Balances and payment cadence — not a separate spreadsheet.',
   },
   {
     key: 'vendors',
     title: 'Loan vendors',
-    description: 'Lenders separated from individual loans for clean reporting.',
+    description: 'Lenders split from individual loans so reporting stays clean.',
   },
 ] as const;
 
 export const LANDING_AI_PROMPTS = [
   {
     name: 'transaction_slug_assign',
-    desc: 'Generates a stable slug per transaction.',
+    desc: 'Stable slug per transaction — useful before categorization.',
     active: true,
     tokens: '184,402',
     cost: '$1.84',
   },
   {
     name: 'transaction_category_assign',
-    desc: 'Maps transactions to your category tree.',
+    desc: 'Maps memo text to your category tree.',
     active: true,
     tokens: '92,118',
     cost: '$0.92',
   },
   {
     name: 'recurring_detect',
-    desc: 'Identifies recurring patterns across history.',
+    desc: 'Finds recurring patterns across history.',
     active: false,
     tokens: '21,704',
     cost: '$0.21',

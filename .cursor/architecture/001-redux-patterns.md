@@ -135,7 +135,9 @@ Reducers only apply payloads and set flags. Validation, branching, transformatio
 ---
 
 ### 5) `builders` slices must not store objects
-`builders` can contain primitives, literal unions, and arrays of primitives only. Never store nested objects/maps in `builders` (see ADR 007 for breadcrumb trail shape).
+`builders` can contain primitives, literal unions, and arrays of primitives only. Never store nested objects/maps in `builders`.
+
+**ADR 007 exception:** `breadcrumbBuilder` may store serializable breadcrumb trail objects (`base`, `segments` with `staticLink` / `plainText` kinds) as documented in [007 – Dashboard breadcrumbs](./007-redux-dashboard-breadcrumbs.md). That slice is the only approved object-bearing builder.
 
 ✅ **Do**
 ```ts

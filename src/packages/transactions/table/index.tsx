@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { TRANSACTION_DETAIL_PATH } from '@/config/routes';
 import type { Transaction } from '@/model/transaction';
-import { setCurrentTransactionThunk } from '@/store/thunks/transactions/set-current-transaction-thunk';
-import { assignTransactionSlugThunk } from '@/store/thunks/transactions/assign-transaction-slug-thunk';
+import {
+  assignTransactionSlugThunk,
+  setCurrentTransactionThunk,
+} from '@/store/thunks/transactions';
 import { RecategorizeFlowModal } from '@/packages/transactions/recategorize-flow-modal';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';

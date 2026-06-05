@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { STATEMENT_IMPORT_DETAIL_PATH } from '@/config/routes';
 import type { StatementImport } from '@/model/statement-import';
-import { setCurrentStatementImportThunk } from '@/store/thunks/statement-imports/set-current-statement-import-thunk';
+import { setCurrentStatementImportThunk } from '@/store/thunks/statement-imports';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 export const StatementImportsTable = () => {

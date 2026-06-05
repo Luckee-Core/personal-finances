@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import type { Loan } from '@/model/loan';
-import { saveLoanThunk } from '@/store/thunks/loans/save-loan-thunk';
+import { saveLoanThunk } from '@/store/thunks/loans';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 type Props = {

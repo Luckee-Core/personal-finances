@@ -3,9 +3,8 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { store } from '@/store/store';
-import { createCategoryThunk } from '@/store/thunks/categories/create-category-thunk';
-import { updateTransactionCategoryThunk } from '@/store/thunks/transactions/update-transaction-category-thunk';
+import { createCategoryThunk } from '@/store/thunks/categories';
+import { updateTransactionCategoryThunk } from '@/store/thunks/transactions';
 import { getCategoryMenuPlacement } from '@/utils/categories';
 import { normalizeCategoryName } from '@/utils/categories';
 
@@ -128,23 +127,18 @@ export const TransactionCategoryCombobox = ({
 
     setIsSaving(true);
     const created = await dispatch(createCategoryThunk(trimmed));
+    setIsSaving(false);
     if (created.status !== 200) {
-      setIsSaving(false);
       onError?.(created.message ?? 'Failed to create category');
       return;
     }
 
-    const newCat = Object.values(store.getState().categories).find(
-      (cat) => normalizeCategoryName(cat.name) === normalizeCategoryName(trimmed),
-    );
-    setIsSaving(false);
-
-    if (!newCat) {
+    if (!created.entityId) {
       onError?.('Category was created but could not be assigned');
       return;
     }
 
-    await assignCategory(newCat.id, newCat.name);
+    await assignCategory(created.entityId, trimmed);
   };
 
   const menuContent = (

@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import type { AnticipatedCost } from '@/model/anticipated-cost';
-import { deleteAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/delete-anticipated-cost-thunk';
-import { updateAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/update-anticipated-cost-thunk';
+import {
+  deleteAnticipatedCostThunk,
+  updateAnticipatedCostThunk,
+} from '@/store/thunks/anticipated-costs';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 import { formatAnticipatedTimeframeLabel } from '@/utils/anticipated';

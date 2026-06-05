@@ -16,10 +16,10 @@ export const LandingPlanningSection = () => {
         <LandingSectionLabel number="03" label="Planning" tone="dark" />
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.heading}>Plan the bills you already know are coming.</h2>
+            <h2 className={styles.heading}>The bills you already know are coming.</h2>
             <p className={styles.lead}>
-              Detect recurring purchases automatically, mark exceptions, and keep an honest view of
-              what&apos;s locked in next month.
+              Recurring detection when you want help, plus honest overrides when it gets it wrong.
+              Mark &quot;not recurring&quot; once and the next import respects that.
             </p>
             <div className={styles.cliChip}>
               <span className={styles.cliPrompt}>$</span>
@@ -43,7 +43,7 @@ export const LandingPlanningSection = () => {
               <div className={styles.tuningLabel}>Tuning</div>
               <div className={styles.tuningTitle}>&quot;Mark not recurring&quot;</div>
               <p className={styles.tuningDesc}>
-                Teach the detector with a single click. Your overrides feed back into future imports.
+                One click when the detector is wrong. That slug stays out of future recurring runs.
               </p>
             </div>
           </div>

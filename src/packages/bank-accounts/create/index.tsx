@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createBankAccountThunk } from '@/store/thunks/bank-accounts/create-bank-account-thunk';
+import { createBankAccountThunk } from '@/store/thunks/bank-accounts';
 import { useAppDispatch } from '@/store/hooks';
 
 const ACCOUNT_TYPES = ['checking', 'savings', 'credit', 'other'] as const;

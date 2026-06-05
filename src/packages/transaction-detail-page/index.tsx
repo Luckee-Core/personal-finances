@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { TRANSACTIONS_PATH } from '@/config/routes';
-import { deleteTransactionThunk } from '@/store/thunks/transactions/delete-transaction-thunk';
-import { loadTransactionSlugAssignAuditThunk } from '@/store/thunks/transactions/load-transaction-slug-assign-audit-thunk';
-import { TransactionCategoryCombobox } from '@/packages/categories/transaction-category-combobox';
+import {
+  deleteTransactionThunk,
+  loadTransactionSlugAssignAuditThunk,
+} from '@/store/thunks/transactions';
+import { TransactionCategoryCombobox } from '@/packages/categories';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 import { getTransactionAccountName } from '@/utils/transactions';
@@ -54,8 +56,8 @@ export const TransactionDetailPage = () => {
   }
 
   const handleDelete = async () => {
-    const status = await dispatch(deleteTransactionThunk(transaction.id));
-    if (status !== 200) return;
+    const result = await dispatch(deleteTransactionThunk(transaction.id));
+    if (result.status !== 200) return;
     router.push(TRANSACTIONS_PATH);
   };
 

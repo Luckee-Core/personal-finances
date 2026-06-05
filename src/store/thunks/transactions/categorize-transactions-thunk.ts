@@ -1,5 +1,5 @@
 import { assignTransactionCategoriesBatchThunk } from './assign-transaction-categories-batch-thunk';
-import { saveActiveCategoryAssignPromptThunk } from '@/store/thunks/ai-prompts/save-active-category-assign-prompt-thunk';
+import { saveActiveCategoryAssignPromptThunk } from '@/store/thunks/ai-prompts';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';
 

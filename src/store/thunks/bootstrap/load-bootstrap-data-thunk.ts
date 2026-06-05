@@ -32,13 +32,13 @@ import {
 } from '@/store/dumps';
 import { rowsToEntityRecord } from '@/store/normalize';
 import type { AppThunk } from '@/store/types';
-import type { ThunkStatus } from '@/api/types';
+import type { ThunkResult } from '@/store/thunks/thunk-result';
 
 /**
  * Loads all bootstrap entity dumps from the API.
  */
 export const loadBootstrapDataThunk =
-  (): AppThunk<Promise<ThunkStatus>> =>
+  (): AppThunk<Promise<ThunkResult>> =>
   async (dispatch) => {
     const [
       bankAccounts,
@@ -72,36 +72,36 @@ export const loadBootstrapDataThunk =
       getAllRecurringDetectAiExchanges(),
     ]);
 
-    let status: ThunkStatus = 200;
+    let failed = false;
 
     if (bankAccounts.ok) {
       dispatch(BankAccountsActions.setBankAccounts(rowsToEntityRecord(bankAccounts.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (creditCards.ok) {
       dispatch(CreditCardsActions.setCreditCards(rowsToEntityRecord(creditCards.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (categories.ok) {
       dispatch(CategoriesActions.setCategories(rowsToEntityRecord(categories.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (transactions.ok) {
       dispatch(TransactionsActions.setTransactions(rowsToEntityRecord(transactions.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (recurring.ok) {
       dispatch(RecurringPurchasesActions.setRecurringPurchases(rowsToEntityRecord(recurring.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (anticipated.ok) {
@@ -109,37 +109,37 @@ export const loadBootstrapDataThunk =
         AnticipatedCostsActions.setAnticipatedCosts(rowsToEntityRecord(anticipated.data)),
       );
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (loans.ok) {
       dispatch(LoansActions.setLoans(rowsToEntityRecord(loans.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (loanVendors.ok) {
       dispatch(LoanVendorsActions.setLoanVendors(rowsToEntityRecord(loanVendors.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (notRecurring.ok) {
       dispatch(NotRecurringActions.setNotRecurring(rowsToEntityRecord(notRecurring.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (imports.ok) {
       dispatch(StatementImportsActions.setStatementImports(rowsToEntityRecord(imports.data)));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (llmModels.ok) {
       dispatch(LlmModelsActions.setLlmModels(llmModels.data));
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (slugExchanges.ok) {
@@ -149,7 +149,7 @@ export const loadBootstrapDataThunk =
         ),
       );
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (categoryExchanges.ok) {
@@ -159,7 +159,7 @@ export const loadBootstrapDataThunk =
         ),
       );
     } else {
-      status = 400;
+      failed = true;
     }
 
     if (recurringExchanges.ok) {
@@ -169,8 +169,12 @@ export const loadBootstrapDataThunk =
         ),
       );
     } else {
-      status = 400;
+      failed = true;
     }
 
-    return status;
+    if (failed) {
+      return { status: 400, message: 'Failed to load one or more bootstrap datasets' };
+    }
+
+    return { status: 200 };
   };

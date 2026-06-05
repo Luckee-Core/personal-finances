@@ -6,13 +6,16 @@ import { loadAiPromptsThunk } from './load-ai-prompts-thunk';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';
 
+/**
+ * Updates the active transaction_slug_assign prompt system text.
+ */
 export const saveActiveSlugAssignPromptThunk =
   (systemPrompt: string): AppThunk<Promise<ThunkResult>> =>
   async (dispatch, getState) => {
     let active = getActiveSlugAssignPrompt(getState().aiPrompts);
     if (!active) {
-      const status = await dispatch(loadAiPromptsThunk(AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN));
-      if (status !== 200) {
+      const loadResult = await dispatch(loadAiPromptsThunk(AI_PROMPT_TYPE_TRANSACTION_SLUG_ASSIGN));
+      if (loadResult.status !== 200) {
         return { status: 400, message: 'Could not load slug assign prompt' };
       }
       active = getActiveSlugAssignPrompt(getState().aiPrompts);

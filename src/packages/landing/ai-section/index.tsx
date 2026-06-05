@@ -8,23 +8,23 @@ export const LandingAiSection = () => {
         <LandingSectionLabel number="04" label="Settings" />
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.heading}>AI you actually control.</h2>
+            <h2 className={styles.heading}>Prompts you can version — not vibes in a black box.</h2>
             <p className={styles.lead}>
-              Three prompt types, versioned and activatable. Audit every request on the AI Costs page
-              with 30, 90, and 365-day views.
+              Three prompt types: slug assign, category assign, recurring detect. Edit them, activate
+              a version, and audit token spend on the AI Costs page (30 / 90 / 365-day windows).
             </p>
             <ul className={styles.list}>
               <li className={styles.listItem}>
                 <span className={styles.bullet}>→</span>
-                Versioned prompts — pin or revert anytime
+                Versioned prompts — revert when a change makes things worse
               </li>
               <li className={styles.listItem}>
                 <span className={styles.bullet}>→</span>
-                Per-request token & cost tracking
+                Per-request token and cost in the audit tables
               </li>
               <li className={styles.listItem}>
                 <span className={styles.bullet}>→</span>
-                30 / 90 / 365-day cost windows
+                Same three-table pattern I use on other Luckee AI features
               </li>
             </ul>
           </div>

@@ -8,10 +8,10 @@ export const LandingDashboardSection = () => {
         <LandingSectionLabel number="01" label="Overview" />
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <h2 className={styles.heading}>One dashboard for spend and commitments.</h2>
+            <h2 className={styles.heading}>One place for spend and what&apos;s already locked in.</h2>
             <p className={styles.lead}>
-              Monthly spend, forward averages, and the week ahead — recurring bills and anticipated
-              costs in one view, so nothing surprises you on the 28th.
+              Monthly totals, a forward monthly average, and the week ahead. Recurring bills and
+              anticipated costs in one view — so a due date does not blindside you mid-month.
             </p>
             <ul className={styles.list}>
               <li className={styles.listItem}>

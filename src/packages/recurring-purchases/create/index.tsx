@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/create-recurring-purchase-thunk';
-import { updateRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/update-recurring-purchase-thunk';
+import {
+  createRecurringPurchaseThunk,
+  updateRecurringPurchaseThunk,
+} from '@/store/thunks/recurring-purchases';
 import { useAppDispatch } from '@/store/hooks';
 import {
   BILLING_INTERVAL_OPTIONS,

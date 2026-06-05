@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { BANK_ACCOUNTS_PATH, CREDIT_CARDS_PATH } from '@/config/routes';
-import { createTransactionThunk } from '@/store/thunks/transactions/create-transaction-thunk';
+import { createTransactionThunk } from '@/store/thunks/transactions';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 type Props = {

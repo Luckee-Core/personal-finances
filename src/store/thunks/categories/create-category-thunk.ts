@@ -23,5 +23,5 @@ export const createCategoryThunk =
     }
 
     dispatch(CategoriesActions.upsertCategory(result.data));
-    return { status: 200 };
+    return { status: 200, entityId: result.data.id };
   };

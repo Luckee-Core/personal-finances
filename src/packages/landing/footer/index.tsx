@@ -21,7 +21,7 @@ export const LandingFooter = () => {
             GitHub
           </a>
           <span>
-            Built by{' '}
+            Built by Matt @{' '}
             <a href={THT_URL} target="_blank" rel="noopener noreferrer" className={styles.thtLink}>
               TroutHouseTech
             </a>

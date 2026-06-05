@@ -9,10 +9,10 @@ export const LandingActivitySection = () => {
         <LandingSectionLabel number="02" label="Activity" />
         <div className={styles.grid}>
           <div>
-            <h2 className={styles.heading}>Pull in statements. Let AI do the boring part.</h2>
+            <h2 className={styles.heading}>Drop the CSV. Fix the boring rows yourself.</h2>
             <p className={styles.lead}>
-              Drop a CSV, review the parsed rows, and let your own prompts handle slugs and
-              categories. Every change is yours to override.
+              Import bank and credit statements, review what parsed, then let your prompts handle
+              slugs and categories. The model suggests — you override anything that looks wrong.
             </p>
             <ul className={styles.points}>
               {LANDING_ACTIVITY_POINTS.map((p) => (

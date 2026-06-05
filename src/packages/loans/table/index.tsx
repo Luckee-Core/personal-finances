@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import type { Loan } from '@/model/loan';
-import { deleteLoanThunk } from '@/store/thunks/loans/delete-loan-thunk';
-import { updateLoanThunk } from '@/store/thunks/loans/update-loan-thunk';
+import { deleteLoanThunk, updateLoanThunk } from '@/store/thunks/loans';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 import { getLoanVendorName } from '@/utils/loans';

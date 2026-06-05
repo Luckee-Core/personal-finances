@@ -1,14 +1,14 @@
 import { CurrentRecurringPurchaseActions } from '@/store/current';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
 import type { AppThunk } from '@/store/types';
-import type { ThunkStatus } from '@/api/types';
+import type { ThunkResult } from '@/store/thunks/thunk-result';
 
 /**
  * Sets the current recurring purchase for detail navigation.
  */
 export const setCurrentRecurringPurchaseThunk =
-  (purchase: RecurringPurchase): AppThunk<ThunkStatus> =>
-  (dispatch) => {
+  (purchase: RecurringPurchase): AppThunk<Promise<ThunkResult>> =>
+  async (dispatch) => {
     dispatch(CurrentRecurringPurchaseActions.setCurrentRecurringPurchase(purchase));
-    return 200;
+    return { status: 200 };
   };

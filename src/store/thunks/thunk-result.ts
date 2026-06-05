@@ -4,6 +4,7 @@ export type ThunkResult =
   | {
       status: 200;
       message?: string;
+      entityId?: string;
       batchProcessed?: number;
       batchRemaining?: number;
       batchTotalMatching?: number;

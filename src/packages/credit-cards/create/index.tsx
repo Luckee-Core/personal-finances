@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createCreditCardThunk } from '@/store/thunks/credit-cards/create-credit-card-thunk';
+import { createCreditCardThunk } from '@/store/thunks/credit-cards';
 import { useAppDispatch } from '@/store/hooks';
 
 type Props = {

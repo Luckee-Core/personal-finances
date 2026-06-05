@@ -15,11 +15,13 @@ import {
   DEFAULT_TRANSACTION_SLUG_ASSIGN_PROMPT,
 } from '@/utils/ai-prompts';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { activateAiPromptThunk } from '@/store/thunks/ai-prompts/activate-ai-prompt-thunk';
-import { createAiPromptThunk } from '@/store/thunks/ai-prompts/create-ai-prompt-thunk';
-import { deleteAiPromptThunk } from '@/store/thunks/ai-prompts/delete-ai-prompt-thunk';
-import { loadAiPromptsThunk } from '@/store/thunks/ai-prompts/load-ai-prompts-thunk';
-import { setCurrentAiPromptThunk } from '@/store/thunks/ai-prompts/set-current-ai-prompt-thunk';
+import {
+  activateAiPromptThunk,
+  createAiPromptThunk,
+  deleteAiPromptThunk,
+  loadAiPromptsThunk,
+  setCurrentAiPromptThunk,
+} from '@/store/thunks/ai-prompts';
 
 export const AiPromptsPage = () => {
   const dispatch = useAppDispatch();
@@ -50,7 +52,7 @@ export const AiPromptsPage = () => {
     }
     setCreating(true);
     setMessage(null);
-    const code = await dispatch(
+    const result = await dispatch(
       createAiPromptThunk({
         type: typeFilter,
         name,
@@ -66,7 +68,7 @@ export const AiPromptsPage = () => {
       }),
     );
     setCreating(false);
-    if (code !== 200) {
+    if (result.status !== 200) {
       setMessage('Could not create prompt version.');
       return;
     }

@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { LoanVendor } from '@/model/loan-vendor';
-import { createLoanVendorThunk } from '@/store/thunks/loan-vendors/create-loan-vendor-thunk';
-import { updateLoanVendorThunk } from '@/store/thunks/loan-vendors/update-loan-vendor-thunk';
+import { createLoanVendorThunk, updateLoanVendorThunk } from '@/store/thunks/loan-vendors';
 import { useAppDispatch } from '@/store/hooks';
 
 type Props = {

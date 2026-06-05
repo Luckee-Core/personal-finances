@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { BANK_ACCOUNTS_PATH, CREDIT_CARDS_PATH } from '@/config/routes';
-import { uploadStatementImportThunk } from '@/store/thunks/statement-imports/upload-statement-import-thunk';
+import { uploadStatementImportThunk } from '@/store/thunks/statement-imports';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 type ImportSource = 'bank' | 'credit_card';

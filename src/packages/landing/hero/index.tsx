@@ -1,7 +1,15 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { HOME_PATH } from '@/config/routes';
-import { LANDING_HERO_KICKER, LANDING_HERO_STATS } from '../content/landing-content';
+import {
+  LANDING_HERO_CTA_PRIMARY,
+  LANDING_HERO_CTA_SECONDARY,
+  LANDING_HERO_HEADLINE,
+  LANDING_HERO_HEADLINE_ACCENT,
+  LANDING_HERO_KICKER,
+  LANDING_HERO_STATS,
+  LANDING_HERO_SUB,
+} from '../content/landing-content';
 
 export const LandingHero = () => {
   return (
@@ -11,20 +19,17 @@ export const LandingHero = () => {
       <div className={styles.inner}>
         <p className={styles.kicker}>{LANDING_HERO_KICKER}</p>
         <h1 className={styles.heading}>
-          Know where your money goes{' '}
-          <span className={styles.accent}>before the month ends.</span>
+          {LANDING_HERO_HEADLINE}{' '}
+          <span className={styles.accent}>{LANDING_HERO_HEADLINE_ACCENT}</span>
         </h1>
-        <p className={styles.sub}>
-          Import bank and credit CSVs, categorize with your own prompts, track recurring bills,
-          loans, and planned costs — on your stack, your data.
-        </p>
+        <p className={styles.sub}>{LANDING_HERO_SUB}</p>
         <div className={styles.ctaRow}>
           <a href="#open-source" className={styles.ctaPrimary}>
-            Clone & self-host
+            {LANDING_HERO_CTA_PRIMARY}
             <ArrowRight className={styles.ctaIcon} />
           </a>
           <Link href={HOME_PATH} className={styles.ctaSecondary}>
-            See the dashboard
+            {LANDING_HERO_CTA_SECONDARY}
           </Link>
         </div>
         <div className={styles.stats}>

@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/store/hooks';
 import { TransactionsTable } from './table';
 import { CreateTransactionModal } from './create';
 import { RecategorizeFlowModal } from './recategorize-flow-modal';
-import { assignTransactionSlugsBatchThunk } from '@/store/thunks/transactions/assign-transaction-slugs-batch-thunk';
+import { assignTransactionSlugsBatchThunk } from '@/store/thunks/transactions';
 
 export const TransactionsPage = () => {
   const dispatch = useAppDispatch();

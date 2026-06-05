@@ -5,7 +5,7 @@ import { RecurringPurchasesTable } from './table';
 import { RecurringPurchaseFormModal } from './create';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
 import { useAppDispatch } from '@/store/hooks';
-import { detectRecurringPurchasesThunk } from '@/store/thunks/recurring-purchases/detect-recurring-purchases-thunk';
+import { detectRecurringPurchasesThunk } from '@/store/thunks/recurring-purchases';
 
 export const RecurringPurchasesPage = () => {
   const dispatch = useAppDispatch();

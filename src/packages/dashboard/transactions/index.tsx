@@ -11,10 +11,12 @@ import { getDashboardTimePeriodLabel } from '@/model/dashboard/time-period';
 import { DashboardBuilderActions } from '@/store/builders';
 import type { Transaction } from '@/model/transaction';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setCurrentTransactionThunk } from '@/store/thunks/transactions/set-current-transaction-thunk';
-import { deleteTransactionThunk } from '@/store/thunks/transactions/delete-transaction-thunk';
-import { TransactionCategoryCombobox } from '@/packages/categories/transaction-category-combobox';
-import { TransactionRowActionsMenu } from './transaction-row-actions-menu';
+import {
+  deleteTransactionThunk,
+  setCurrentTransactionThunk,
+} from '@/store/thunks/transactions';
+import { TransactionCategoryCombobox } from '@/packages/categories';
+import { TransactionRowActionsMenu } from '@/components/transaction-row-actions-menu';
 import {
   isDateInDashboardRange,
   resolveDashboardDateRange,
@@ -87,9 +89,9 @@ export const DashboardTransactionsSection = () => {
     }
     setActionError(null);
     setDeletingId(row.id);
-    const status = await dispatch(deleteTransactionThunk(row.id));
+    const result = await dispatch(deleteTransactionThunk(row.id));
     setDeletingId(null);
-    if (status !== 200) {
+    if (result.status !== 200) {
       setActionError('Failed to delete transaction');
     }
   };

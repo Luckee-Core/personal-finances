@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { RECURRING_PATH } from '@/config/routes';
-import { deleteRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/delete-recurring-purchase-thunk';
+import { deleteRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 
@@ -27,8 +27,8 @@ export const RecurringPurchaseDetailPage = () => {
   }
 
   const handleDelete = async () => {
-    const status = await dispatch(deleteRecurringPurchaseThunk(purchase.id));
-    if (status !== 200) return;
+    const result = await dispatch(deleteRecurringPurchaseThunk(purchase.id));
+    if (result.status !== 200) return;
     router.push(RECURRING_PATH);
   };
 

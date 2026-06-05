@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { RECURRING_PURCHASE_DETAIL_PATH } from '@/config/routes';
 import type { RecurringPurchase } from '@/model/recurring-purchase';
-import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases/set-current-recurring-purchase-thunk';
+import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
 import { estimateRecurringMonthlyCents } from '@/utils/recurring';

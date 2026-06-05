@@ -1,6 +1,6 @@
 import { detectRecurringPurchases } from '@/api/recurring-detect';
 import { RecurringDetectAiExchangesActions, RecurringPurchasesActions } from '@/store/dumps';
-import { loadTransactionsThunk } from '@/store/thunks/transactions/load-transactions-thunk';
+import { loadTransactionsThunk } from '@/store/thunks/transactions';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';
 

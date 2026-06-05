@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import type { LoanVendor } from '@/model/loan-vendor';
-import { deleteLoanVendorThunk } from '@/store/thunks/loan-vendors/delete-loan-vendor-thunk';
+import { deleteLoanVendorThunk } from '@/store/thunks/loan-vendors';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 type Props = {

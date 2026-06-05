@@ -5,7 +5,7 @@ import {
   TransactionSlugAssignAiRequestsActions,
   TransactionSlugAssignAiResponsesActions,
 } from '@/store/dumps';
-import { saveActiveSlugAssignPromptThunk } from '@/store/thunks/ai-prompts/save-active-slug-assign-prompt-thunk';
+import { saveActiveSlugAssignPromptThunk } from '@/store/thunks/ai-prompts';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';
 
@@ -16,6 +16,9 @@ export type ReslugTransactionInput = {
   usePromptOverride?: boolean;
 };
 
+/**
+ * Re-assigns a transaction slug with optional prompt save and override.
+ */
 export const reslugTransactionThunk =
   (input: ReslugTransactionInput): AppThunk<Promise<ThunkResult>> =>
   async (dispatch) => {

@@ -14,10 +14,10 @@ export const saveActiveCategoryAssignPromptThunk =
   async (dispatch, getState) => {
     let active = getActiveCategoryAssignPrompt(getState().aiPrompts);
     if (!active) {
-      const status = await dispatch(
+      const loadResult = await dispatch(
         loadAiPromptsThunk(AI_PROMPT_TYPE_TRANSACTION_CATEGORY_ASSIGN),
       );
-      if (status !== 200) {
+      if (loadResult.status !== 200) {
         return { status: 400, message: 'Could not load category assign prompt' };
       }
       active = getActiveCategoryAssignPrompt(getState().aiPrompts);

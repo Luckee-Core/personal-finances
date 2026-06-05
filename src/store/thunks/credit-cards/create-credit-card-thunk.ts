@@ -3,6 +3,9 @@ import { CreditCardsActions } from '@/store/dumps';
 import type { AppThunk } from '@/store/types';
 import type { ThunkResult } from '@/store/thunks/thunk-result';
 
+/**
+ * Creates a credit card via the API and upserts it into the dump.
+ */
 export const createCreditCardThunk =
   (payload: CreateCreditCardPayload): AppThunk<Promise<ThunkResult>> =>
   async (dispatch) => {

@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/create-anticipated-cost-thunk';
-import { updateAnticipatedCostThunk } from '@/store/thunks/anticipated-costs/update-anticipated-cost-thunk';
+import {
+  createAnticipatedCostThunk,
+  updateAnticipatedCostThunk,
+} from '@/store/thunks/anticipated-costs';
 import { useAppDispatch } from '@/store/hooks';
 import { formatAnticipatedEveryLabel } from '@/utils/anticipated';
 import {

@@ -5,9 +5,10 @@ export const LandingFinalCta = () => {
     <section className={styles.section}>
       <div className={styles.gridOverlay} aria-hidden />
       <div className={styles.inner}>
-        <p className={styles.kicker}>Mission</p>
+        <p className={styles.kicker}>Get started</p>
         <h2 className={styles.heading}>
-          Self-host your finances. <span className={styles.accent}>Keep the prompts.</span>
+          Clone it. Run it on your machine.{' '}
+          <span className={styles.accent}>Keep the prompts.</span>
         </h2>
         <div className={styles.ctaRow}>
           <a

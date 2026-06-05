@@ -6,7 +6,7 @@ import {
 } from '@/store/dumps';
 import { rowsToEntityRecord } from '@/store/normalize';
 import type { AppThunk } from '@/store/types';
-import type { ThunkStatus } from '@/api/types';
+import type { ThunkResult } from '@/store/thunks/thunk-result';
 import type { TransactionSlugAssignAiExchange } from '@/model/transaction-slug-assign-ai-exchange';
 import type { TransactionSlugAssignAiRequest } from '@/model/transaction-slug-assign-ai-request';
 import type { TransactionSlugAssignAiResponse } from '@/model/transaction-slug-assign-ai-response';
@@ -15,11 +15,14 @@ import type { TransactionSlugAssignAiResponse } from '@/model/transaction-slug-a
  * Loads slug-assign audit rows for a transaction into audit dumps.
  */
 export const loadTransactionSlugAssignAuditThunk =
-  (transactionId: string): AppThunk<Promise<ThunkStatus>> =>
+  (transactionId: string): AppThunk<Promise<ThunkResult>> =>
   async (dispatch, getState) => {
     const result = await getTransactionSlugAssignAudit(transactionId);
     if (!result.ok) {
-      return result.status >= 500 ? 500 : 400;
+      return {
+        status: result.status >= 500 ? 500 : 400,
+        message: result.error.message,
+      };
     }
 
     const { exchanges, requests, responses } = result.data;
@@ -41,5 +44,5 @@ export const loadTransactionSlugAssignAuditThunk =
     dispatch(TransactionSlugAssignAiRequestsActions.setTransactionSlugAssignAiRequests(mergeRequests));
     dispatch(TransactionSlugAssignAiResponsesActions.setTransactionSlugAssignAiResponses(mergeResponses));
 
-    return 200;
+    return { status: 200 };
   };
