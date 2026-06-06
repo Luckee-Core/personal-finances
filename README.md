@@ -16,6 +16,7 @@ npm run dev
 
 - Landing: [http://localhost:3000](http://localhost:3000)
 - Dashboard: **`/dashboard`**
+- Documentation: **`/docs`** (sidebar guides; API reference at **`/docs/api`** — start Express first)
 
 Copy **`.env.example`** → **`.env.local`**. Set **`NEXT_PUBLIC_SERVER_URL`** to your Express base URL (dev default when unset: `http://localhost:3011`).
 
@@ -35,14 +36,14 @@ Full pair setup (Express first, then web): [express `docs/oss-quickstart.md`](ht
 |------|-----------------|
 | **`src/app`** | App Router pages (thin wrappers) |
 | **`src/components`** | Shared shell (layout, sidebar, header) |
-| **`src/packages`** | Feature modules (transactions, dashboard, loans, …) |
+| **`src/packages`** | Feature modules (transactions, dashboard, docs, loans, …) |
 | **`src/model`** | Shared domain `type` definitions |
 | **`src/api`** | Express HTTP clients (`getApiClient`) |
 | **`src/store`** | Redux slices and manual thunks |
 | **`src/utils`** | Pure helpers by domain |
 | **`docs`** | Security audit notes |
 
-Architecture ADRs: **`.cursor/architecture/README.md`**. Agent rules: **`.cursor/rules/AGENTS.md`**.
+Architecture ADRs: **`.cursor/architecture/README.md`** (docs site: [009 – `/docs` sidebar](.cursor/architecture/009-api-docs-page.md)). Agent rules: **`.cursor/rules/AGENTS.md`**.
 
 ## Pair with Express
 

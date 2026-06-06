@@ -2,7 +2,7 @@
 
 BEFORE implementing ANY feature, you MUST:
 1. Read `.cursor/architecture/README.md`.
-2. Read the relevant ADRs in `.cursor/architecture/` (this repo uses **001–008**, **007**; **016** is not applicable).
+2. Read the relevant ADRs in `.cursor/architecture/` (this repo uses **001–009**, **007**; **016** is not applicable).
 3. Follow documented patterns EXACTLY; if no pattern exists, you MUST add an ADR first.
 
 ## Non-Negotiable Rules
@@ -51,3 +51,4 @@ BEFORE implementing ANY feature, you MUST:
 - File organization → `.cursor/architecture/005-file-organization.md`
 - Constants / utilities → `.cursor/architecture/006-constants-utilities.md`
 - Dashboard breadcrumbs → `.cursor/architecture/007-redux-dashboard-breadcrumbs.md`
+- Documentation site (`/docs` sidebar) → `.cursor/architecture/009-api-docs-page.md`

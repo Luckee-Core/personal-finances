@@ -20,7 +20,7 @@ type NavLink = {
 const NAV_LINKS: NavLink[] = [
   { href: '#features', label: 'Features' },
   { href: '#open-source', label: 'Open Source' },
-  { href: '#docs', label: 'Docs' },
+  { href: DOCS_URL, label: 'Docs' },
   { href: GITHUB_WEB_URL, label: 'GitHub', external: true },
 ];
 

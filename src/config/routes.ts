@@ -1,5 +1,11 @@
 export const LANDING_PATH = '/';
 
+export const DOCS_PATH = '/docs';
+export const DOCS_GETTING_STARTED_PATH = '/docs/getting-started';
+export const DOCS_OPEN_SOURCE_PATH = '/docs/open-source';
+export const DOCS_API_PATH = '/docs/api';
+export const DOCS_SECURITY_PATH = '/docs/security';
+
 export const HOME_PATH = '/dashboard';
 
 export const TRANSACTIONS_PATH = '/transactions';

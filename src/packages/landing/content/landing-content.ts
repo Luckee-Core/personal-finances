@@ -9,8 +9,7 @@ export const GITHUB_API_URL =
   process.env.NEXT_PUBLIC_GITHUB_API_URL ??
   `https://github.com/${githubOrg}/personal-finances-express-server`;
 
-export const DOCS_URL =
-  process.env.NEXT_PUBLIC_DOCS_URL ?? `${GITHUB_WEB_URL}#readme`;
+export const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL ?? '/docs';
 
 export const THT_URL =
   process.env.NEXT_PUBLIC_THT_URL ?? 'https://www.trouthousetech.com';
