@@ -139,7 +139,20 @@ npm run dev`}
       <section className={styles.section}>
         <h2 className={styles.h2}>3. Smoke test</h2>
         <ol className={styles.ol}>
-          <li className={styles.li}>Express health returns success.</li>
+          <li className={styles.li}>
+            Express health returns success:{' '}
+            <code className={styles.code}>curl http://localhost:3011/api/health</code>
+          </li>
+          <li className={styles.li}>
+            API catalog returns 16 groups:{' '}
+            <code className={styles.code}>
+              curl -s http://localhost:3011/api-docs.json | jq &apos;.data.groups | length&apos;
+            </code>
+          </li>
+          <li className={styles.li}>
+            Open <Link href={DOCS_API_PATH} className={styles.link}>API reference</Link> — sidebar
+            API section lists catalog groups (Express must be running).
+          </li>
           <li className={styles.li}>Web dashboard loads transactions and categories.</li>
           <li className={styles.li}>
             Create a category or transaction — confirm{' '}

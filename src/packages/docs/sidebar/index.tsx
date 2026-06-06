@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { DOCS_API_PATH } from '@/config/routes';
 import { LANDING_BRAND_NAME } from '@/packages/landing/content/landing-content';
 import {
   DOCS_SIDEBAR_GUIDES,
@@ -159,8 +158,6 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
     [apiGroupNav, pathname, hash],
   );
 
-  const onApiPage = pathname === DOCS_API_PATH;
-
   return (
     <aside className={styles.sidebar}>
       <div className={styles.inner}>
@@ -178,7 +175,7 @@ export const DocsSidebar = (props: DocsSidebarProps) => {
         <nav className={styles.nav} aria-label="API">
           <p className={styles.sectionLabel}>API</p>
           <ul className={styles.list}>{apiItems}</ul>
-          {onApiPage && apiGroupNav.length === 0 ? (
+          {apiGroupNav.length === 0 ? (
             <p className={styles.apiHint}>Start Express to load API entities.</p>
           ) : null}
         </nav>

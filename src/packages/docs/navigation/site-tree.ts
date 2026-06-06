@@ -1,4 +1,5 @@
 import {
+  DOCS_API_PATH,
   DOCS_GETTING_STARTED_PATH,
   DOCS_OPEN_SOURCE_PATH,
   DOCS_SECURITY_PATH,
@@ -36,4 +37,5 @@ export const DOCS_SIDEBAR_GUIDES: DocsSidebarEntry[] = [
   { kind: 'link', name: 'Getting started', href: DOCS_GETTING_STARTED_PATH },
   { kind: 'link', name: 'Open source', href: DOCS_OPEN_SOURCE_PATH },
   { kind: 'link', name: 'Security', href: DOCS_SECURITY_PATH },
+  { kind: 'link', name: 'API reference', href: DOCS_API_PATH },
 ];
