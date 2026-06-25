@@ -7,11 +7,25 @@ import {
 } from '@/api/_shared/express-response';
 import type { ApiResponse } from '@/api/types';
 import type { NotRecurring } from '@/model/not-recurring';
-import type { RecurringPurchase } from '@/model/recurring-purchase';
+import type { RecurringPurchaseEvent } from '@/model/recurring-purchase-event';
+import type { RecurringPurchase, RecurringPurchaseStatus } from '@/model/recurring-purchase';
 
 type ListBody = { success: boolean; data?: RecurringPurchase[]; error?: string };
 type EntityBody = { success: boolean; data?: RecurringPurchase; error?: string };
 type VoidBody = { success: boolean; error?: string };
+type EventsBody = { success: boolean; data?: RecurringPurchaseEvent[]; error?: string };
+
+type StatusChangeBody = {
+  success: boolean;
+  data?: { purchase: RecurringPurchase; event: RecurringPurchaseEvent };
+  error?: string;
+};
+
+type NextDueChangeBody = {
+  success: boolean;
+  data?: { purchase: RecurringPurchase; event: RecurringPurchaseEvent };
+  error?: string;
+};
 
 export type CreateRecurringPurchasePayload = {
   name: string;
@@ -100,5 +114,72 @@ export const deleteRecurringPurchase = async (id: string): Promise<ApiResponse<n
     return fromExpressVoidBody(data, 'Failed to delete recurring purchase');
   } catch (error: unknown) {
     return fromCaughtError(error, 'Failed to delete recurring purchase');
+  }
+};
+
+export type ChangeRecurringPurchaseStatusPayload = {
+  status: RecurringPurchaseStatus;
+  pause_days?: number | null;
+  notes?: string | null;
+};
+
+/**
+ * Changes recurring purchase status and appends a history event.
+ */
+export const changeRecurringPurchaseStatus = async (
+  id: string,
+  payload: ChangeRecurringPurchaseStatusPayload,
+): Promise<
+  ApiResponse<{ purchase: RecurringPurchase; event: RecurringPurchaseEvent }>
+> => {
+  try {
+    const { data } = await getApiClient().post<StatusChangeBody>(
+      `/api/data/recurring-purchases/${id}/status`,
+      payload,
+    );
+    return fromExpressBody(data, 'Failed to change recurring purchase status');
+  } catch (error: unknown) {
+    return fromCaughtError(error, 'Failed to change recurring purchase status');
+  }
+};
+
+export type ChangeRecurringPurchaseNextDuePayload = {
+  next_due_at: string | null;
+  notes?: string | null;
+};
+
+/**
+ * Changes next payment date and appends a history event.
+ */
+export const changeRecurringPurchaseNextDue = async (
+  id: string,
+  payload: ChangeRecurringPurchaseNextDuePayload,
+): Promise<
+  ApiResponse<{ purchase: RecurringPurchase; event: RecurringPurchaseEvent }>
+> => {
+  try {
+    const { data } = await getApiClient().post<NextDueChangeBody>(
+      `/api/data/recurring-purchases/${id}/next-due`,
+      payload,
+    );
+    return fromExpressBody(data, 'Failed to change next payment date');
+  } catch (error: unknown) {
+    return fromCaughtError(error, 'Failed to change next payment date');
+  }
+};
+
+/**
+ * Loads recurring purchase history events for a purchase.
+ */
+export const getRecurringPurchaseEvents = async (
+  id: string,
+): Promise<ApiResponse<RecurringPurchaseEvent[]>> => {
+  try {
+    const { data } = await getApiClient().get<EventsBody>(
+      `/api/data/recurring-purchases/${id}/events`,
+    );
+    return fromExpressListBody(data, 'Failed to load recurring purchase events');
+  } catch (error: unknown) {
+    return fromCaughtError(error, 'Failed to load recurring purchase events');
   }
 };

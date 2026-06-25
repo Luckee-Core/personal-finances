@@ -21,6 +21,7 @@ import {
   transactionCategoryAssignAiResponsesReducer,
   llmModelsReducer,
   recurringDetectAiExchangesReducer,
+  recurringPurchaseEventsReducer,
 } from './dumps';
 import {
   currentTransactionReducer,
@@ -52,6 +53,7 @@ export const rootReducer = combineReducers({
   transactionCategoryAssignAiResponses: transactionCategoryAssignAiResponsesReducer,
   llmModels: llmModelsReducer,
   recurringDetectAiExchanges: recurringDetectAiExchangesReducer,
+  recurringPurchaseEvents: recurringPurchaseEventsReducer,
   currentTransaction: currentTransactionReducer,
   currentRecurringPurchase: currentRecurringPurchaseReducer,
   currentStatementImport: currentStatementImportReducer,

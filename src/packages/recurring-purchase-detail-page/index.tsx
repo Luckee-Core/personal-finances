@@ -1,15 +1,35 @@
 'use client';
 
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { RECURRING_PATH } from '@/config/routes';
-import { deleteRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases';
+import { PauseStatusModal } from '@/packages/recurring-purchases/pause-status-modal';
+import {
+  deleteRecurringPurchaseThunk,
+  loadRecurringPurchaseEventsThunk,
+} from '@/store/thunks/recurring-purchases';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
+import { HistoryTable } from './history-table';
+import { NextDueEditor } from './next-due-editor';
+import { StatusActions } from './status-actions';
 
 export const RecurringPurchaseDetailPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const purchase = useAppSelector((state) => state.currentRecurringPurchase);
+  const allEvents = useAppSelector((state) => state.recurringPurchaseEvents);
+  const [pauseOpen, setPauseOpen] = useState(false);
+
+  const events = useMemo(() => {
+    if (!purchase) return [];
+    return Object.values(allEvents).filter((event) => event.recurring_purchase_id === purchase.id);
+  }, [allEvents, purchase]);
+
+  useEffect(() => {
+    if (!purchase?.id) return;
+    void dispatch(loadRecurringPurchaseEventsThunk(purchase.id));
+  }, [dispatch, purchase?.id]);
 
   if (!purchase) {
     return (
@@ -43,25 +63,31 @@ export const RecurringPurchaseDetailPage = () => {
           Delete
         </button>
       </div>
+
+      <StatusActions purchase={purchase} onPauseClick={() => setPauseOpen(true)} />
+
       <dl className={styles.details}>
         <div>
           <dt className={styles.term}>Amount</dt>
           <dd className={styles.value}>{formatCents(purchase.amount_cents)}</dd>
         </div>
         <div>
-          <dt className={styles.term}>Active</dt>
-          <dd className={styles.value}>{purchase.is_active ? 'Yes' : 'No'}</dd>
-        </div>
-        <div>
-          <dt className={styles.term}>Next due</dt>
-          <dd className={styles.value}>{purchase.next_due_at ?? '—'}</dd>
-        </div>
-        <div>
           <dt className={styles.term}>Vendor</dt>
           <dd className={styles.value}>{purchase.vendor ?? '—'}</dd>
         </div>
       </dl>
+
+      <NextDueEditor purchase={purchase} />
+
       {purchase.notes && <p className={styles.notes}>{purchase.notes}</p>}
+
+      <HistoryTable events={events} />
+
+      <PauseStatusModal
+        isOpen={pauseOpen}
+        purchase={purchase}
+        onClose={() => setPauseOpen(false)}
+      />
     </div>
   );
 };

@@ -38,3 +38,7 @@ export {
   RecurringDetectAiExchangesActions,
   recurringDetectAiExchangesReducer,
 } from './recurringDetectAiExchanges';
+export {
+  RecurringPurchaseEventsActions,
+  recurringPurchaseEventsReducer,
+} from './recurringPurchaseEvents';

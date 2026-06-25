@@ -7,7 +7,7 @@ import type { RecurringPurchase } from '@/model/recurring-purchase';
 import { setCurrentRecurringPurchaseThunk } from '@/store/thunks/recurring-purchases';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { formatCents } from '@/utils/format-cents';
-import { estimateRecurringMonthlyCents } from '@/utils/recurring';
+import { estimateRecurringMonthlyCents, getRecurringPurchaseStatusLabel, resolveRecurringPurchaseStatus } from '@/utils/recurring';
 
 type Props = {
   hideInactive: boolean;
@@ -26,7 +26,9 @@ export const DashboardRecurringTable = ({ hideInactive }: Props) => {
   const rows = useAppSelector((state) => Object.values(state.recurringPurchases));
 
   const visibleRows = useMemo(() => {
-    const filtered = hideInactive ? rows.filter((row) => row.is_active) : rows;
+    const filtered = hideInactive
+      ? rows.filter((row) => resolveRecurringPurchaseStatus(row) === 'active')
+      : rows;
     return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
   }, [rows, hideInactive]);
 
@@ -42,7 +44,7 @@ export const DashboardRecurringTable = ({ hideInactive }: Props) => {
           <tr>
             <th className={styles.th}>Name</th>
             <th className={styles.th}>Interval</th>
-            <th className={styles.th}>Active</th>
+            <th className={styles.th}>Status</th>
             <th className={styles.thRight}>Per payment</th>
             <th className={styles.thRight}>Monthly avg</th>
           </tr>
@@ -58,7 +60,12 @@ export const DashboardRecurringTable = ({ hideInactive }: Props) => {
                 <span className={styles.name}>{row.name}</span>
               </td>
               <td className={styles.td}>{formatIntervalLabel(row)}</td>
-              <td className={styles.td}>{row.is_active ? 'Yes' : 'No'}</td>
+              <td className={styles.td}>
+                <span>{getRecurringPurchaseStatusLabel(resolveRecurringPurchaseStatus(row))}</span>
+                {resolveRecurringPurchaseStatus(row) === 'paused' && row.paused_until && (
+                  <span className={styles.pausedUntil}> · until {row.paused_until.slice(0, 10)}</span>
+                )}
+              </td>
               <td className={styles.tdRight}>{formatCents(row.amount_cents)}</td>
               <td className={styles.tdRight}>
                 {formatCents(estimateRecurringMonthlyCents(row))}
@@ -107,6 +114,9 @@ const styles = {
   `,
   name: `
     font-medium
+  `,
+  pausedUntil: `
+    text-xs text-gray-500
   `,
   empty: `
     px-4 py-8 text-center text-gray-500

@@ -8,6 +8,8 @@ export const BILLING_INTERVAL_OPTIONS: BillingInterval[] = [
   'custom',
 ];
 
+export type RecurringPurchaseStatus = 'active' | 'paused' | 'cancelled';
+
 export type RecurringPurchase = {
   id: string;
   name: string;
@@ -20,6 +22,8 @@ export type RecurringPurchase = {
   next_due_at: string | null;
   ends_at: string | null;
   is_active: boolean;
+  status: RecurringPurchaseStatus;
+  paused_until: string | null;
   notes: string | null;
   created_at: string;
   updated_at: string;
