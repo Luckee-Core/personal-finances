@@ -24,7 +24,7 @@ export const LandingAiSection = () => {
               </li>
               <li className={styles.listItem}>
                 <span className={styles.bullet}>→</span>
-                Same three-table pattern I use on other Luckee AI features
+                Same three-table audit pattern I use on other self-hosted AI prompt workflows
               </li>
             </ul>
           </div>

@@ -23,7 +23,6 @@ ADRs keep implementation consistent across the project by documenting:
 | [007](./007-redux-dashboard-breadcrumbs.md) | Dashboard breadcrumbs — `breadcrumbBuilder` slice |
 | [008](./008-express-api-boundary.md) | **Express API boundary** — no `src/app/api`; clients → Express |
 | [009](./009-api-docs-page.md) | Documentation site — `/docs` sidebar shell; `/docs/api` fetches Express catalog (RSC) |
-| [016](./016-standalone-chat-studio-ui-contract.md) | **Not applicable** — chat studio UI (no feature in this repo) |
 
 ## How to use
 

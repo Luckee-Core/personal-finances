@@ -20,7 +20,7 @@ npm run dev
 
 Copy **`.env.example`** → **`.env.local`**. Set **`NEXT_PUBLIC_SERVER_URL`** to your Express base URL (dev default when unset: `http://localhost:3011`).
 
-Full pair setup (Express first, then web): [express `docs/oss-quickstart.md`](https://github.com/Luckee-Core/personal-finances-express-server/blob/main/docs/oss-quickstart.md).
+Full pair setup (Express first, then web): [express `docs/oss-quickstart.md`](https://github.com/Luckee-Core/personal-finances-express-server/blob/main/docs/oss-quickstart.md). Wire contract: [`docs/oss/wire-contract.md`](https://github.com/Luckee-Core/personal-finances-express-server/blob/main/docs/oss/wire-contract.md).
 
 ## What you get
 
@@ -52,6 +52,7 @@ Architecture ADRs: **`.cursor/architecture/README.md`** (docs site: [009 – `/d
 | Express API | [Luckee-Core/personal-finances-express-server](https://github.com/Luckee-Core/personal-finances-express-server) |
 | Database setup | [SQL run order](https://github.com/Luckee-Core/personal-finances-express-server/blob/main/docs/database-setup.md) |
 | OSS governance | [mentorai-server `data/open-source/`](https://github.com/trouthouse-tech/mentorai-server/tree/main/data/open-source) |
+| Wire contract | [express `docs/oss/wire-contract.md`](https://github.com/Luckee-Core/personal-finances-express-server/blob/main/docs/oss/wire-contract.md) |
 
 License: MIT — see **`LICENSE`**.
 
@@ -70,4 +71,4 @@ Written for **solo or trusted-team use on your machine** by default. Run Next an
 
 ## Built by
 
-Matt @ [TroutHouseTech](https://www.trouthousetech.com) — Philly. Same OSS patterns as [Lead Studio](https://github.com/lead-open-source/lead-studio-web-open-source) and the other Luckee studios.
+Matt @ [TroutHouseTech](https://www.trouthousetech.com). OSS patterns and release checklist: [mentorai-server `data/open-source/`](https://github.com/trouthouse-tech/mentorai-server/tree/main/data/open-source).
